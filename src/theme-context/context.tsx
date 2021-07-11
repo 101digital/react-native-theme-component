@@ -10,6 +10,8 @@ import { defaultColors, ThemeColorProps } from '../colors';
 import { ThemeFontProps } from '../fonts';
 import { InputFieldStyles } from '../input-field';
 import defaultInputFieldTheme from '../input-field/theme';
+import { InputPhoneNumberStyles } from '../input-phone-number';
+import defaultInputPhoneNumberTheme from '../input-phone-number/theme';
 
 export const defaultTheme: ThemeProps = {
   colors: defaultColors,
@@ -18,6 +20,7 @@ export const defaultTheme: ThemeProps = {
   fonts: {},
   bottomSheet: defaultBottomSheetTheme,
   inputField: defaultInputFieldTheme,
+  inputPhoneNumber: defaultInputPhoneNumberTheme,
 };
 
 export type ThemeProps = {
@@ -27,6 +30,7 @@ export type ThemeProps = {
   alert: AlertModalStyles;
   bottomSheet: BottomSheetModalStyles;
   inputField: InputFieldStyles;
+  inputPhoneNumber: InputPhoneNumberStyles;
 };
 
 export interface ThemeContextData {
@@ -36,6 +40,7 @@ export interface ThemeContextData {
   alert: AlertModalStyles;
   bottomSheet: BottomSheetModalStyles;
   inputField: InputFieldStyles;
+  inputPhoneNumber: InputPhoneNumberStyles;
 }
 
 export const themeDefaultValue: ThemeContextData = {
@@ -45,6 +50,7 @@ export const themeDefaultValue: ThemeContextData = {
   alert: {},
   bottomSheet: {},
   inputField: {},
+  inputPhoneNumber: {},
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeDefaultValue);
@@ -56,6 +62,7 @@ export const useThemeContextValue = (initial: ThemeProps): ThemeContextData => {
   const [alert] = useState<AlertModalStyles>(initial.alert ?? {});
   const [bottomSheet] = useState<BottomSheetModalStyles>(initial.bottomSheet ?? {});
   const [inputField] = useState<InputFieldStyles>(initial.inputField ?? {});
+  const [inputPhoneNumber] = useState<InputPhoneNumberStyles>(initial.inputPhoneNumber ?? {});
 
   return useMemo(
     () => ({
@@ -65,7 +72,8 @@ export const useThemeContextValue = (initial: ThemeProps): ThemeContextData => {
       alert,
       bottomSheet,
       inputField,
+      inputPhoneNumber,
     }),
-    [colors, fonts, button, alert, bottomSheet, inputField]
+    [colors, fonts, button, alert, bottomSheet, inputField, inputPhoneNumber]
   );
 };

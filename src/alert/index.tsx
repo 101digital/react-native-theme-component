@@ -131,7 +131,7 @@ const AlertModal = (props: AlertModalProps) => {
                   flex: 1,
                 },
               }}
-              variant='secondary'
+              variant="secondary"
               label={cancelTitle}
               onPress={onCancel}
             />

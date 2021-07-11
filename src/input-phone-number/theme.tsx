@@ -1,10 +1,10 @@
 import { Platform, StyleSheet } from 'react-native';
-import { InputFieldStyles } from '.';
+import { InputPhoneNumberStyles } from '.';
 
-const defaultInputFieldTheme: InputFieldStyles = StyleSheet.create({
+const defaultInputPhoneNumberTheme: InputPhoneNumberStyles = StyleSheet.create({
   containerStyle: {
-    alignItems: 'center',
     flexDirection: 'row',
+    alignItems: 'center',
   },
   inputContainerStyle: {
     flex: 1,
@@ -23,6 +23,18 @@ const defaultInputFieldTheme: InputFieldStyles = StyleSheet.create({
     color: 'red',
     marginTop: Platform.OS === 'ios' ? 5 : 10,
   },
+  dialContainerStyle: {
+    marginLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 0,
+    padding: 0,
+  },
+  dialTextStyle: {
+    fontSize: 16,
+    color: 'black',
+    marginRight: 5,
+  },
 });
 
-export default defaultInputFieldTheme;
+export default defaultInputPhoneNumberTheme;
