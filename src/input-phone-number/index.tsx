@@ -9,12 +9,15 @@ import React, {
   useState,
 } from 'react';
 import {
+  KeyboardTypeOptions,
   NativeSyntheticEvent,
+  ReturnKeyTypeOptions,
   StyleProp,
   Text,
   TextInput,
+  TextInputChangeEventData,
   TextInputFocusEventData,
-  TextInputProps,
+  TextInputSubmitEditingEventData,
   TextStyle,
   TouchableOpacity,
   View,
@@ -32,7 +35,7 @@ export type InputPhoneNumberRefs = {
   onUpdateDialCode: (code: string) => void;
 };
 
-export type InputPhoneNumberProps = TextInputProps & {
+export type InputPhoneNumberProps = {
   name: string;
   defaultDialCode?: string;
   onPressDialCode?: () => void;
@@ -45,6 +48,20 @@ export type InputPhoneNumberProps = TextInputProps & {
   inactiveBorderColor?: string;
   placeholderTextColor?: string;
   style?: InputPhoneNumberStyles;
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  autoCorrect?: boolean;
+  autoFocus?: boolean;
+  blurOnSubmit?: boolean;
+  editable?: boolean;
+  keyboardType?: KeyboardTypeOptions;
+  maxLength?: number;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
+  onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  onSubmitEditing?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
+  placeholder?: string;
+  returnKeyType?: ReturnKeyTypeOptions;
+  textAlign?: 'left' | 'center' | 'right';
   formatError?: (error: string) => string;
 };
 
