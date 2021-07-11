@@ -1,69 +1,36 @@
 import { useField } from 'formik';
 import { defaultsDeep } from 'lodash';
-import React, {
-  forwardRef,
-  ReactNode,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import {
-  KeyboardTypeOptions,
   NativeSyntheticEvent,
-  ReturnKeyTypeOptions,
   StyleProp,
   Text,
   TextInput,
-  TextInputChangeEventData,
   TextInputFocusEventData,
-  TextInputSubmitEditingEventData,
+  TextInputProps,
   TextStyle,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
-import {
-  TextInputMask,
-  TextInputMaskOptionProp,
-  TextInputMaskTypeProp,
-} from 'react-native-masked-text';
+import { TextInputMask, TextInputMaskProps } from 'react-native-masked-text';
 import { ArrowDownIcon } from '../assets';
 import { ThemeContext } from '../theme-context';
 
-export type InputPhoneNumberRefs = {
-  onUpdateDialCode: (code: string) => void;
-};
-
-export type InputPhoneNumberProps = {
-  name: string;
-  defaultDialCode?: string;
-  onPressDialCode?: () => void;
-  type?: TextInputMaskTypeProp;
-  options?: TextInputMaskOptionProp;
-  prefixIcon?: ReactNode;
-  suffixIcon?: ReactNode;
-  errorBorderColor?: string;
-  activeBorderColor?: string;
-  inactiveBorderColor?: string;
-  placeholderTextColor?: string;
-  style?: InputPhoneNumberStyles;
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
-  autoCorrect?: boolean;
-  autoFocus?: boolean;
-  blurOnSubmit?: boolean;
-  editable?: boolean;
-  keyboardType?: KeyboardTypeOptions;
-  maxLength?: number;
-  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
-  onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onSubmitEditing?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
-  placeholder?: string;
-  returnKeyType?: ReturnKeyTypeOptions;
-  textAlign?: 'left' | 'center' | 'right';
-  formatError?: (error: string) => string;
-};
+export type InputPhoneNumberProps = TextInputProps &
+  TextInputMaskProps & {
+    name: string;
+    dialCode: string;
+    onPressDialCode?: () => void;
+    prefixIcon?: ReactNode;
+    suffixIcon?: ReactNode;
+    errorBorderColor?: string;
+    activeBorderColor?: string;
+    inactiveBorderColor?: string;
+    placeholderTextColor?: string;
+    style?: InputPhoneNumberStyles;
+    formatError?: (error: string) => string;
+  };
 
 export type InputPhoneNumberStyles = {
   containerStyle?: StyleProp<ViewStyle>;
@@ -74,11 +41,11 @@ export type InputPhoneNumberStyles = {
   dialTextStyle?: StyleProp<TextStyle>;
 };
 
-const InputPhoneNumber = forwardRef((props: InputPhoneNumberProps, ref: any) => {
+const InputPhoneNumber = (props: InputPhoneNumberProps) => {
   const {
     name,
+    dialCode,
     onPressDialCode,
-    defaultDialCode,
     onFocus,
     onBlur,
     suffixIcon,
@@ -99,18 +66,6 @@ const InputPhoneNumber = forwardRef((props: InputPhoneNumberProps, ref: any) => 
   const styles: InputPhoneNumberStyles = defaultsDeep(style, inputPhoneNumber);
   const showMask = !!options?.mask;
   const [mobileNumber, setMobileNumber] = useState('');
-  const [dialCode, setDialCode] = useState(defaultDialCode);
-
-  useImperativeHandle(
-    ref,
-    (): InputPhoneNumberRefs => ({
-      onUpdateDialCode,
-    })
-  );
-
-  const onUpdateDialCode = (code: string) => {
-    setDialCode(code);
-  };
 
   useEffect(() => {
     field.onChange(name)(`${dialCode}${mobileNumber}`);
@@ -171,7 +126,7 @@ const InputPhoneNumber = forwardRef((props: InputPhoneNumberProps, ref: any) => 
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
               options={options}
-              type={type ?? 'custom'}
+              type={type}
               {...restProps}
             />
           ) : (
@@ -193,13 +148,13 @@ const InputPhoneNumber = forwardRef((props: InputPhoneNumberProps, ref: any) => 
       )}
     </View>
   );
-});
+};
 
 InputPhoneNumber.defaultProps = {
   errorBorderColor: '#E63946',
   activeBorderColor: '#0073F0',
   inactiveBorderColor: '#E6E6E6',
-  defaultDialCode: '65',
+  type: 'custom',
 };
 
 export default InputPhoneNumber;
