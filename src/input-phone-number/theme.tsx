@@ -27,7 +27,7 @@ const defaultInputPhoneNumberTheme: InputPhoneNumberStyles = StyleSheet.create({
     marginLeft: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 0,
+    marginRight: 5,
     padding: 0,
   },
   dialTextStyle: {
