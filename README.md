@@ -1,1 +1,228 @@
 # react-native-theme-component
+
+<b>react-native-theme-component</b> is a reusable component which provides set of base elements that can be used across all the apps developed by 101 Digital.
+
+## Features
+
+- Configure theme data (colors, fonts, button styles, alert styles... )
+- Easy to access theme data inside React component
+- Easy to use elements as other React Native elements
+
+## Installation
+
+To add this component to React Native app, run this command:
+
+```
+yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git
+```
+
+Make sure you have permission to access this repository
+
+Because <b>react-native-theme-component</b> depends on some libraries, so make sure you installed all dependencies into your project.
+
+- Lodash: https://github.com/lodash/lodash
+- Formik: https://github.com/formium/formik
+- Masked Text: https://github.com/benhurott/react-native-masked-text
+- React Native Modal: https://github.com/react-native-modal/react-native-modal
+- Svg display: https://github.com/react-native-svg/react-native-svg
+
+## Quick Start
+
+Before using this component, you must wrap your components with `ThemProvider` in your `app.ts`
+
+```javascript
+import { ThemeProvider } from 'react-native-theme-component';
+
+const App = () => {
+  return <ThemProvider theme={yourThemeData}>/* YOUR COMPONENTS */</ThemProvider>;
+};
+```
+
+You can create your theme data by using `createThemeData` function. Or elese, default theme will be used.
+
+```javascript
+import { createThemeData } from 'react-native-theme-component';
+import fonts from './fonts';
+
+const yourThemeData = createThemeData({
+  fonts: {
+    medium: fonts.poppinsMedium,
+    regular: fonts.poppinsRegular,
+    semiBold: fonts.poppinsSemiBold,
+    bold: fonts.poppinsBold,
+  },
+  colors: {},
+  button: {},
+  alert: {},
+  bottomSheet: {},
+  inputField: {},
+  inputPhoneNumber: {},
+});
+
+export default yourThemeData;
+```
+
+## API reference
+
+### Theme data
+
+Use `createThemeData` function to create your theme, see below props
+
+```javascript
+type ThemeProps = {
+  colors: ThemeColorProps,
+  button: ButtonStyles,
+  fonts: ThemeFontProps,
+  alert: AlertModalStyles,
+  bottomSheet: BottomSheetModalStyles,
+  inputField: InputFieldStyles,
+  inputPhoneNumber: InputPhoneNumberStyles,
+};
+```
+
+### Access Theme Data
+
+<b>react-native-theme-component</b> using Context APO to manage theme data, you can using `useContext` to access theme data
+Additional, use can use prodive hooks function to acceess `colors` or `fonts`
+
+```javascript
+import { ThemeContext, useThemeFonts, useThemeColors } from 'react-native-theme-component';
+
+const YourComponent = () => {
+
+   // const { fonts, colors } = useContext(ThemeContext)
+    const fonts = useThemeFonts();
+    const colors = useThemeColors();
+
+    return (
+   /* YOUR COMPONENTS */
+    );
+}
+```
+
+### `colors`
+
+- Props
+
+```javascript
+type ThemeColorProps = {
+  primaryColor?: string,
+  secondaryColor?: string,
+  primaryTextColor?: string,
+  secondaryTextColor?: string,
+  primaryButtonColor?: string,
+  secondaryButtonColor?: string,
+  primaryButtonLabelColor?: string,
+  secondaryButtonLabelColor?: string,
+  mainBackgroundColor?: string,
+  secondaryBackgroundColor?: string,
+  dividerColor?: string,
+  appBarBackgroundColor?: string,
+  appBarTextColor?: string,
+};
+```
+
+- Default values
+
+```javascript
+const defaultColors: ThemeColorProps = {
+  primaryColor: '#0073F0',
+  secondaryColor: '#0073F0',
+  primaryTextColor: '#0C3F79',
+  secondaryTextColor: '#0C3F79',
+  primaryButtonColor: '#0073F0',
+  secondaryButtonColor: '#ffffff',
+  primaryButtonLabelColor: '#ffffff',
+  secondaryButtonLabelColor: '#0073F0',
+  mainBackgroundColor: '#ffffff',
+  secondaryBackgroundColor: '#f7f9fb',
+  dividerColor: '#E6E6E6',
+  appBarBackgroundColor: '$ffffff',
+  appBarTextColor: '#0C3F79',
+};
+```
+
+### `fonts`
+
+Default is using system fonts
+
+```javascript
+type ThemeFontProps = {
+  thin?: string,
+  regular?: string,
+  medium?: string,
+  semiBold?: string,
+  bold?: string,
+};
+```
+
+### Button
+
+- Props
+
+| Name             | Type                                | Description                                                      |
+| :--------------- | :---------------------------------- | :--------------------------------------------------------------- |
+| label            | string (Required)                   | Button label                                                     |
+| isLoading        | bool (Optional)                     | Show loading indicator inside button                             |
+| variant          | 'primary' or 'secondary' (Optional) | Default is `primary`                                             |
+| disableOpacity   | number (Optional)                   | Default is `0.6`                                                 |
+| loadingIndicator | React Node (Optional)               | Provide custom indicator loading, default is `ActivityIndicator` |
+| indicatorColor   | string (Optional)                   | Default is `#ffffff`                                             |
+| style            | ButtonStyles (Optional)             | Button styles                                                    |
+| ...restProps     | TouchableOpacityProps (Optional)    |                                                                  |
+
+- ButtonStyles
+
+```javascript
+type ButtonStyles = {
+  primaryContainerStyle?: StyleProp<ViewStyle>,
+  secondaryContainerStyle?: StyleProp<ViewStyle>,
+  primaryLabelStyle?: StyleProp<TextStyle>,
+  secondaryLabelStyle?: StyleProp<TextStyle>,
+  loadingWrapperStyle?: StyleProp<ViewStyle>,
+};
+```
+
+### Alert
+
+- Props
+
+| Name               | Type                                 | Description                                                                         |
+| :----------------- | :----------------------------------- | :---------------------------------------------------------------------------------- |
+| title              | string (Required)                    | Alert title                                                                         |
+| message            | string (Optional)                    | Alert message                                                                       |
+| isVisible          | bool (Optional)                      | Make visible alert, default is `false`                                              |
+| horizontalSpace    | number (Optional)                    | Horizontal space between elements inside Alert                                      |
+| children           | React Node (Optional)                | Children below message and above CTA buttons                                        |
+| leftIcon           | React Node (Optional)                | Top left icon, default is information icon                                          |
+| closeIcon          | React Node (Optional)                | Close icon (top right), default is cross icon                                       |
+| confirmTitle       | string (Optional)                    | Title of confirm button, default is `OK`                                            |
+| cancelTitle        | string (Optional)                    | Title of cancel button, default is `undefined`. If `undefined`, cancel button hiden |
+| backdropOpacity    | number (Optional)                    | Backdrop opacity, default is `0.5`                                                  |
+| animationIn        | 'fadeIn', 'slideInUp', 'zoomIn'      | Animation when alert appear                                                         |
+| animationOut       | 'fadeOut', 'slideOutDown', 'zoomOut' | Animation when alert disappear                                                      |
+| animationInTiming  | number (Optional)                    | Animation in duration                                                               |
+| animationOutTiming | number (Optional)                    | Animation out duration                                                              |
+| onConfirmed        | Function (Optional)                  | Handle action when clicked confirm button                                           |
+| onCancel           | Function (Optional)                  | Handle action when clicked cancel button                                            |
+| onClose            | Function (Optional)                  | Handle action when clicked close button                                             |
+| onBackButtonPress  | Function (Optional)                  | Handle action when press back button in Android                                     |
+| onBackdropPress    | Function (Optional)                  | Handle action when press on backdrop                                                |
+| onModalHide        | Function (Optional)                  | Callback function when modal hiden                                                  |
+| style              | AlertModalStyles (Optional)          |                                                                                     |
+
+- Styles
+
+```javascript
+type AlertModalStyles = {
+  modalStyle?: StyleProp<ViewStyle>,
+  containerStyle?: StyleProp<ViewStyle>,
+  headerStyle?: StyleProp<ViewStyle>,
+  titleTextStyle?: StyleProp<TextStyle>,
+  bodyStyle?: StyleProp<ViewStyle>,
+  messageTextStyle?: StyleProp<TextStyle>,
+  footerStyle?: StyleProp<ViewStyle>,
+  leftIconStyle?: StyleProp<ViewStyle>,
+  closeButtonStyle?: StyleProp<ViewStyle>,
+};
+```
