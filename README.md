@@ -83,7 +83,7 @@ type ThemeProps = {
 ### Access Theme Data
 
 <b>react-native-theme-component</b> using Context APO to manage theme data, you can using `useContext` to access theme data
-Additional, use can use prodive hooks function to acceess `colors` or `fonts`
+Additional, or can use prodive hooks function to acceess `colors` or `fonts`
 
 ```javascript
 import { ThemeContext, useThemeFonts, useThemeColors } from 'react-native-theme-component';
