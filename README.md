@@ -168,8 +168,8 @@ type ThemeFontProps = {
 | disableOpacity   | number (Optional)                   | Default is `0.6`                                                 |
 | loadingIndicator | React Node (Optional)               | Provide custom indicator loading, default is `ActivityIndicator` |
 | indicatorColor   | string (Optional)                   | Default is `#ffffff`                                             |
+| ...restProps     | TouchableOpacityProps (Optional)    | Other ToucableOpacity props (onPress, disabled ...)              |
 | style            | ButtonStyles (Optional)             | Button styles                                                    |
-| ...restProps     | TouchableOpacityProps (Optional)    |                                                                  |
 
 - ButtonStyles
 
@@ -191,7 +191,7 @@ type ButtonStyles = {
 | :----------------- | :----------------------------------- | :---------------------------------------------------------------------------------- |
 | title              | string (Required)                    | Alert title                                                                         |
 | message            | string (Optional)                    | Alert message                                                                       |
-| isVisible          | bool (Optional)                      | Make visible alert, default is `false`                                              |
+| isVisible          | bool (Optional)                      | Show/hide alert, default is `false`                                                 |
 | horizontalSpace    | number (Optional)                    | Horizontal space between elements inside Alert                                      |
 | children           | React Node (Optional)                | Children below message and above CTA buttons                                        |
 | leftIcon           | React Node (Optional)                | Top left icon, default is information icon                                          |
@@ -199,8 +199,8 @@ type ButtonStyles = {
 | confirmTitle       | string (Optional)                    | Title of confirm button, default is `OK`                                            |
 | cancelTitle        | string (Optional)                    | Title of cancel button, default is `undefined`. If `undefined`, cancel button hiden |
 | backdropOpacity    | number (Optional)                    | Backdrop opacity, default is `0.5`                                                  |
-| animationIn        | 'fadeIn', 'slideInUp', 'zoomIn'      | Animation when alert appear                                                         |
-| animationOut       | 'fadeOut', 'slideOutDown', 'zoomOut' | Animation when alert disappear                                                      |
+| animationIn        | 'fadeIn', 'slideInUp', 'zoomIn'      | Animation when alert appear. Default is `fadeIn`                                    |
+| animationOut       | 'fadeOut', 'slideOutDown', 'zoomOut' | Animation when alert disappear. Default is `fadeOut`                                |
 | animationInTiming  | number (Optional)                    | Animation in duration                                                               |
 | animationOutTiming | number (Optional)                    | Animation out duration                                                              |
 | onConfirmed        | Function (Optional)                  | Handle action when clicked confirm button                                           |
@@ -208,7 +208,7 @@ type ButtonStyles = {
 | onClose            | Function (Optional)                  | Handle action when clicked close button                                             |
 | onBackButtonPress  | Function (Optional)                  | Handle action when press back button in Android                                     |
 | onBackdropPress    | Function (Optional)                  | Handle action when press on backdrop                                                |
-| onModalHide        | Function (Optional)                  | Callback function when modal hiden                                                  |
+| onModalHide        | Function (Optional)                  | Callback function when alert hiden                                                  |
 | style              | AlertModalStyles (Optional)          |                                                                                     |
 
 - Styles
@@ -224,5 +224,101 @@ type AlertModalStyles = {
   footerStyle?: StyleProp<ViewStyle>,
   leftIconStyle?: StyleProp<ViewStyle>,
   closeButtonStyle?: StyleProp<ViewStyle>,
+};
+```
+
+### BottomSheet
+
+- Props
+
+| Name               | Type                                 | Description                                                 |
+| :----------------- | :----------------------------------- | :---------------------------------------------------------- |
+| children           | React Node (Required)                | Children below message and above CTA buttons                |
+| isVisible          | bool (Optional)                      | Show/hide bottom sheet, default is `false`                  |
+| backdropOpacity    | number (Optional)                    | Backdrop opacity, default is `0.5`                          |
+| animationIn        | 'fadeIn', 'slideInUp', 'zoomIn'      | Animation when bottom sheet appear. Default is `fadeIn`     |
+| animationOut       | 'fadeOut', 'slideOutDown', 'zoomOut' | Animation when bottom sheet disappear. Default is `fadeOut` |
+| animationInTiming  | number (Optional)                    | Animation in duration                                       |
+| animationOutTiming | number (Optional)                    | Animation out duration                                      |
+| onBackButtonPress  | Function (Optional)                  | Handle action when press back button in Android             |
+| onBackdropPress    | Function (Optional)                  | Handle action when press on backdrop                        |
+| onModalHide        | Function (Optional)                  | Callback function when bottom sheet hiden                   |
+| style              | BottomSheetModalStyles (Optional)    |                                                             |
+
+- Styles
+
+```javascript
+type BottomSheetModalStyles = {
+  modalStyle?: StyleProp<ViewStyle>,
+  containerStyle?: StyleProp<ViewStyle>,
+  contentContainerStyle?: StyleProp<ViewStyle>,
+};
+```
+
+### Image
+
+- Props
+
+| Name          | Type                      | Description                          |
+| :------------ | :------------------------ | :----------------------------------- |
+| fallbackImage | ImageURISource (Required) | Default images if load source failed |
+| ...restProps  | ImageProps                | All image props                      |
+
+### InputField
+
+- Props
+
+| Name                 | Type                                | Description                                                             |
+| :------------------- | :---------------------------------- | :---------------------------------------------------------------------- |
+| name                 | srting (Required)                   | Formik field name                                                       |
+| prefixIcon           | React Node (Optional)               | Prefix icon of InputField (on the left)                                 |
+| suffixIcon           | React Node (Optional)               | Suffic icon of InputField (on the right)                                |
+| errorBorderColor     | string (Optional)                   | Color of border when error happened                                     |
+| activeBorderColor    | string (Optional)                   | Color of border when field is focused                                   |
+| inactiveBorderColor  | string (Optional)                   | Color of border when field is unfocused                                 |
+| placeholderTextColor | string (Optional)                   | Color of placeholder text                                               |
+| placeholderTextColor | string (Optional)                   | Color of placeholder text                                               |
+| formatError          | Function return string (Optional)   | Format in-line error message, example translate error message by locale |
+| ...restProps         | TextInputProps & TextInputMaskProps | Props of text input and text input mask                                 |
+
+- Styles
+
+```javascript
+type BottomSheetModalStyles = {
+  modalStyle?: StyleProp<ViewStyle>,
+  containerStyle?: StyleProp<ViewStyle>,
+  contentContainerStyle?: StyleProp<ViewStyle>,
+};
+```
+
+### InputPhoneNumber
+
+- Props
+
+| Name                 | Type                                | Description                                                             |
+| :------------------- | :---------------------------------- | :---------------------------------------------------------------------- |
+| name                 | srting (Required)                   | Formik field name                                                       |
+| dialCode             | srting (Required)                   | Dial code (ex: 84, 65, 1, 94, ...)                                      |
+| onPressDialCode      | Function (Required)                 | Handle action when clicked dial code                                    |
+| prefixIcon           | React Node (Optional)               | Prefix icon of InputField (on the left)                                 |
+| suffixIcon           | React Node (Optional)               | Suffic icon of InputField (on the right)                                |
+| errorBorderColor     | string (Optional)                   | Color of border when error happened                                     |
+| activeBorderColor    | string (Optional)                   | Color of border when field is focused                                   |
+| inactiveBorderColor  | string (Optional)                   | Color of border when field is unfocused                                 |
+| placeholderTextColor | string (Optional)                   | Color of placeholder text                                               |
+| placeholderTextColor | string (Optional)                   | Color of placeholder text                                               |
+| formatError          | Function return string (Optional)   | Format in-line error message, example translate error message by locale |
+| ...restProps         | TextInputProps & TextInputMaskProps | Props of text input and text input mask                                 |
+
+- Styles
+
+```javascript
+type InputPhoneNumberStyles = {
+  containerStyle?: StyleProp<ViewStyle>,
+  inputContainerStyle?: StyleProp<ViewStyle>,
+  textInputStyle?: StyleProp<TextStyle>,
+  errorTextStyle?: StyleProp<TextStyle>,
+  dialContainerStyle?: StyleProp<ViewStyle>,
+  dialTextStyle?: StyleProp<TextStyle>,
 };
 ```
