@@ -2,7 +2,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { InputPhoneNumberStyles } from '.';
 
 const defaultInputPhoneNumberTheme: InputPhoneNumberStyles = StyleSheet.create({
-  containerStyle: {
+  contentContainerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
   },

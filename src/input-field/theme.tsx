@@ -2,7 +2,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { InputFieldStyles } from '.';
 
 const defaultInputFieldTheme: InputFieldStyles = StyleSheet.create({
-  containerStyle: {
+  contentContainerStyle: {
     alignItems: 'center',
     flexDirection: 'row',
   },

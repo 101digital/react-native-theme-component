@@ -34,6 +34,7 @@ export type InputPhoneNumberProps = TextInputProps &
 
 export type InputPhoneNumberStyles = {
   containerStyle?: StyleProp<ViewStyle>;
+  contentContainerStyle?: StyleProp<ViewStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
   textInputStyle?: StyleProp<TextStyle>;
   errorTextStyle?: StyleProp<TextStyle>;
@@ -105,8 +106,8 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
   };
 
   return (
-    <View>
-      <View style={[styles.containerStyle, { borderColor: separatorColor }]}>
+    <View style={styles.containerStyle}>
+      <View style={[styles.contentContainerStyle, { borderColor: separatorColor }]}>
         {prefixIcon}
         <TouchableOpacity
           activeOpacity={0.8}

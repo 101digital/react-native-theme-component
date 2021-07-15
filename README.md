@@ -284,10 +284,12 @@ type BottomSheetModalStyles = {
 - Styles
 
 ```javascript
-type BottomSheetModalStyles = {
-  modalStyle?: StyleProp<ViewStyle>,
+type InputFieldStyles = {
   containerStyle?: StyleProp<ViewStyle>,
   contentContainerStyle?: StyleProp<ViewStyle>,
+  inputContainerStyle?: StyleProp<ViewStyle>,
+  textInputStyle?: StyleProp<TextStyle>,
+  errorTextStyle?: StyleProp<TextStyle>,
 };
 ```
 
@@ -315,6 +317,7 @@ type BottomSheetModalStyles = {
 ```javascript
 type InputPhoneNumberStyles = {
   containerStyle?: StyleProp<ViewStyle>,
+  contentContainerStyle?: StyleProp<ViewStyle>,
   inputContainerStyle?: StyleProp<ViewStyle>,
   textInputStyle?: StyleProp<TextStyle>,
   errorTextStyle?: StyleProp<TextStyle>,

@@ -30,6 +30,7 @@ export type InputFieldProps = TextInputMaskProps &
 
 export type InputFieldStyles = {
   containerStyle?: StyleProp<ViewStyle>;
+  contentContainerStyle?: StyleProp<ViewStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
   textInputStyle?: StyleProp<TextStyle>;
   errorTextStyle?: StyleProp<TextStyle>;
@@ -86,8 +87,8 @@ const InputField = (props: InputFieldProps) => {
   };
 
   return (
-    <View>
-      <View style={[styles.containerStyle, { borderColor: separatorColor }]}>
+    <View style={styles.containerStyle}>
+      <View style={[styles.contentContainerStyle, { borderColor: separatorColor }]}>
         {prefixIcon}
         <View style={styles.inputContainerStyle}>
           {showMask ? (
