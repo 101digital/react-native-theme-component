@@ -5,6 +5,7 @@ const defaultInputFieldTheme: InputFieldStyles = StyleSheet.create({
   contentContainerStyle: {
     alignItems: 'center',
     flexDirection: 'row',
+    borderBottomWidth: 2,
   },
   inputContainerStyle: {
     flex: 1,

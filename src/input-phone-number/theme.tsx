@@ -5,6 +5,7 @@ const defaultInputPhoneNumberTheme: InputPhoneNumberStyles = StyleSheet.create({
   contentContainerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottomWidth: 2,
   },
   inputContainerStyle: {
     flex: 1,
