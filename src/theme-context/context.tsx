@@ -7,7 +7,7 @@ import defaultBottomSheetTheme from '../bottom-sheet/theme';
 import { ButtonStyles } from '../button';
 import defaultButtonTheme from '../button/theme';
 import { defaultColors, ThemeColorProps } from '../colors';
-import { ThemeFontProps } from '../fonts';
+import { defaultFont, ThemeFontProps } from '../fonts';
 import { InputFieldStyles } from '../input-field';
 import defaultInputFieldTheme from '../input-field/theme';
 import { InputPhoneNumberStyles } from '../input-phone-number';
@@ -17,7 +17,7 @@ export const defaultTheme: ThemeProps = {
   colors: defaultColors,
   button: defaultButtonTheme,
   alert: defaultAlertTheme,
-  fonts: {},
+  fonts: defaultFont,
   bottomSheet: defaultBottomSheetTheme,
   inputField: defaultInputFieldTheme,
   inputPhoneNumber: defaultInputPhoneNumberTheme,

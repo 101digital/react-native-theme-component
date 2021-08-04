@@ -5,3 +5,11 @@ export type ThemeFontProps = {
   semiBold?: string;
   bold?: string;
 };
+
+export const defaultFont: ThemeFontProps = {
+  regular: 'Poppins-Regular',
+  semiBold: 'Poppins-SemiBold',
+  bold: 'Poppins-Bold',
+  medium: 'Poppins-Medium',
+  thin: 'Poppins-Medium',
+};
