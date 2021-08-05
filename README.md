@@ -325,3 +325,48 @@ type InputPhoneNumberStyles = {
   dialTextStyle?: StyleProp<TextStyle>,
 };
 ```
+
+### Add component to the config.json file manually
+
+1. Make sure you synced latest data in `component.json` to `auth-component.json`[https://github.com/101digital/components-data/blob/main/data/theme-component.json]
+
+2. Add the theme-component to `components` tags. The theme-component have `componentId` is "74a603bd-a36a-4f2b-bc18-385a4101878c" and it can't be changed.
+
+```
+{
+...
+ "components": [
+    {
+      "componentId": "74a603bd-a36a-4f2b-bc18-385a4101878c",
+      "componentName": "ThemeComponent",
+      "isRequired": true
+    }
+  ]
+...
+}
+```
+
+3. Check required dependencies of auth-component inside tag `dependencies` in `config.json`. Make sure tag `dependencies` must have enough below data
+
+```
+{
+...
+ "dependencies": [
+    {
+      "name": "lodash",
+      "version": "^4.17.19",
+      "typescript": {
+        "name": "@types/lodash",
+        "version": "^4.14.161"
+      }
+    },
+    { "name": "formik", "version": "^2.2.9" },
+    { "name": "react-native-masked-text", "version": "^1.13.0" },
+    { "name": "react-native-modal", "version": "^12.0.2" },
+    { "name": "react-native-svg", "version": "^12.1.1" }
+  ],
+...
+}
+```
+
+If have any item is not existing in `dependencies` of `config.json` file, please find missing one from `src/component.json` and put it to `dependencies`.
