@@ -328,7 +328,7 @@ type InputPhoneNumberStyles = {
 
 ### Add component to the config.json file manually
 
-1. Make sure you synced latest data in `component.json` to `auth-component.json`[https://github.com/101digital/components-data/blob/main/data/theme-component.json]
+1. Make sure you synced latest local data in `theme-component.json` into `theme-component.json`[https://github.com/101digital/components-data/blob/main/data/theme-component.json]
 
 2. Add the theme-component to `components` tags. The theme-component have `componentId` is "74a603bd-a36a-4f2b-bc18-385a4101878c" and it can't be changed.
 
