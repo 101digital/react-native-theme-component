@@ -58,8 +58,28 @@ const yourThemeData = createThemeData({
   inputField: {},
   inputPhoneNumber: {},
 });
-
 export default yourThemeData;
+```
+
+- <br>Note</br>: If you use default Poppins font family, you need some steps to link default font to your app
+
+1. Create `react-native.config.js` in root folder
+2. Add assets folder path './node_modules/react-native-theme-component/src/assets/fonts' to config
+
+```javascript
+module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: ['./src/assets/fonts', './node_modules/react-native-theme-component/src/assets/fonts'],
+};
+```
+
+3. Run link assets command
+
+```
+npx react-native link
 ```
 
 ## API reference
