@@ -42,15 +42,9 @@ You can create your theme data by using `createThemeData` function. Or elese, de
 
 ```javascript
 import { createThemeData } from 'react-native-theme-component';
-import fonts from './fonts';
 
 const yourThemeData = createThemeData({
-  fonts: {
-    medium: fonts.poppinsMedium,
-    regular: fonts.poppinsRegular,
-    semiBold: fonts.poppinsSemiBold,
-    bold: fonts.poppinsBold,
-  },
+  fonts: {},
   colors: {},
   button: {},
   alert: {},
@@ -61,10 +55,10 @@ const yourThemeData = createThemeData({
 export default yourThemeData;
 ```
 
-- <br>Note</br>: If you use default Poppins font family, you need some steps to link default font to your app
+#### Note: If you use default font family (Poppins), you need some steps to link default font to your app
 
 1. Create `react-native.config.js` in root folder
-2. Add assets folder path './node_modules/react-native-theme-component/src/assets/fonts' to config
+2. Add assets folder path <br>'./node_modules/react-native-theme-component/src/assets/fonts'</br> to config
 
 ```javascript
 module.exports = {
