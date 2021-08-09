@@ -22,11 +22,13 @@ const defaultButtonTheme: ButtonStyles = StyleSheet.create({
     fontSize: 14,
     color: 'white',
     letterSpacing: 1.1,
+    fontFamily: 'Poppins-Medium',
   },
   secondaryLabelStyle: {
     fontSize: 14,
     color: '#0073F0',
     letterSpacing: 1.1,
+    fontFamily: 'Poppins-Medium',
   },
   loadingWrapperStyle: {
     marginHorizontal: 5,

@@ -18,11 +18,13 @@ const defaultInputPhoneNumberTheme: InputPhoneNumberStyles = StyleSheet.create({
     marginHorizontal: 10,
     fontSize: 16,
     color: 'black',
+    fontFamily: 'Poppins-Regular',
   },
   errorTextStyle: {
     fontSize: 12,
     color: 'red',
     marginTop: Platform.OS === 'ios' ? 5 : 10,
+    fontFamily: 'Poppins-Regular',
   },
   dialContainerStyle: {
     marginLeft: 10,

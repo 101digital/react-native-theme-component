@@ -29,6 +29,7 @@ const defaultAlertTheme: AlertModalStyles = StyleSheet.create({
     paddingVertical: 15,
     color: 'black',
     paddingLeft: 0,
+    fontFamily: 'Poppins-Medium',
   },
   leftIconStyle: {
     paddingVertical: 20,
@@ -40,6 +41,7 @@ const defaultAlertTheme: AlertModalStyles = StyleSheet.create({
   messageTextStyle: {
     fontSize: 15,
     color: 'black',
+    fontFamily: 'Poppins-Regular',
   },
 });
 

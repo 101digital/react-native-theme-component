@@ -11,5 +11,4 @@ export const defaultFont: ThemeFontProps = {
   semiBold: 'Poppins-SemiBold',
   bold: 'Poppins-Bold',
   medium: 'Poppins-Medium',
-  thin: 'Poppins-Medium',
 };
