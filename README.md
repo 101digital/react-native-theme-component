@@ -58,7 +58,7 @@ export default yourThemeData;
 #### Note: If you use default font family (Poppins), you need some steps to link default font to your app
 
 1. Create `react-native.config.js` in root folder
-2. Add assets folder path <br>'./node_modules/react-native-theme-component/src/assets/fonts'</br> to config
+2. Add assets folder path <b>'./node_modules/react-native-theme-component/src/assets/fonts'</b> to config
 
 ```javascript
 module.exports = {
