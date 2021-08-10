@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { ButtonStyles } from '.';
+import { defaultFont } from '../fonts';
 
 const defaultButtonTheme: ButtonStyles = StyleSheet.create({
   primaryContainerStyle: {
@@ -22,13 +23,13 @@ const defaultButtonTheme: ButtonStyles = StyleSheet.create({
     fontSize: 14,
     color: 'white',
     letterSpacing: 1.1,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: defaultFont.medium,
   },
   secondaryLabelStyle: {
     fontSize: 14,
     color: '#0073F0',
     letterSpacing: 1.1,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: defaultFont.medium,
   },
   loadingWrapperStyle: {
     marginHorizontal: 5,

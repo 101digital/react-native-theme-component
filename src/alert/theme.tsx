@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { AlertModalStyles } from '.';
+import { defaultFont } from '../fonts';
 
 const defaultAlertTheme: AlertModalStyles = StyleSheet.create({
   modalStyle: {
@@ -29,7 +30,7 @@ const defaultAlertTheme: AlertModalStyles = StyleSheet.create({
     paddingVertical: 15,
     color: 'black',
     paddingLeft: 0,
-    fontFamily: 'Poppins-Medium',
+    fontFamily: defaultFont.medium,
   },
   leftIconStyle: {
     paddingVertical: 20,
@@ -41,7 +42,7 @@ const defaultAlertTheme: AlertModalStyles = StyleSheet.create({
   messageTextStyle: {
     fontSize: 15,
     color: 'black',
-    fontFamily: 'Poppins-Regular',
+    fontFamily: defaultFont.regular,
   },
 });
 
