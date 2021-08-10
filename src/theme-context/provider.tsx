@@ -1,4 +1,5 @@
-import { defaultsDeep } from 'lodash';
+import { defaultFont } from '@/fonts';
+import { defaultsDeep, isEmpty } from 'lodash';
 import React, { ReactNode, useContext } from 'react';
 import {
   defaultTheme,
@@ -14,7 +15,11 @@ export type BankingProviderProps = {
 };
 
 export const createThemeData = (theme: ThemeProps): ThemeContextData => {
-  return defaultsDeep(theme, defaultTheme);
+  let _fonts = theme.fonts;
+  if (isEmpty(_fonts)) {
+    _fonts = defaultFont;
+  }
+  return defaultsDeep(theme, defaultTheme(_fonts));
 };
 
 export const ThemeProvider = (props: BankingProviderProps) => {

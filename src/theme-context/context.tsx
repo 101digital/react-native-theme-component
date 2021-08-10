@@ -13,14 +13,16 @@ import defaultInputFieldTheme from '../input-field/theme';
 import { InputPhoneNumberStyles } from '../input-phone-number';
 import defaultInputPhoneNumberTheme from '../input-phone-number/theme';
 
-export const defaultTheme: ThemeProps = {
-  colors: defaultColors,
-  button: defaultButtonTheme,
-  alert: defaultAlertTheme,
-  fonts: defaultFont,
-  bottomSheet: defaultBottomSheetTheme,
-  inputField: defaultInputFieldTheme,
-  inputPhoneNumber: defaultInputPhoneNumberTheme,
+export const defaultTheme = (fonts: ThemeFontProps): ThemeProps => {
+  return {
+    colors: defaultColors,
+    button: defaultButtonTheme(fonts),
+    alert: defaultAlertTheme(fonts),
+    fonts: defaultFont,
+    bottomSheet: defaultBottomSheetTheme,
+    inputField: defaultInputFieldTheme(fonts),
+    inputPhoneNumber: defaultInputPhoneNumberTheme(fonts),
+  };
 };
 
 export type ThemeProps = {
