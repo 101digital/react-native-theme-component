@@ -353,12 +353,59 @@ type InputPhoneNumberStyles = {
     {
       "componentId": "74a603bd-a36a-4f2b-bc18-385a4101878c",
       "componentName": "ThemeComponent",
-      "isRequired": true
+      "isRequired": true,
     }
   ]
 ...
 }
 ```
+
+- If you wanna add custome fonts, colors to the theme-component, you can see the example below:
+
+```
+{
+...
+ "components": [
+    {
+      "componentId": "74a603bd-a36a-4f2b-bc18-385a4101878c",
+      "componentName": "ThemeComponent",
+      "isRequired": true,
+      "config": {
+        "fonts": [
+          {
+            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-Regular.ttf",
+            "name": "STIXTwoText-Regular.ttf",
+            "type": "regular"
+          },
+          {
+            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-Medium.ttf",
+            "name": "STIXTwoText-Medium.ttf",
+            "type": "medium"
+          },
+          {
+            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-SemiBold.ttf",
+            "name": "STIXTwoText-SemiBold.ttf",
+            "type": "semiBold"
+          },
+          {
+            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-Bold.ttf",
+            "name": "STIXTwoText-Bold.ttf",
+            "type": "bold"
+          }
+        ],
+        "colors": {
+          "primaryColor": "red"
+        }
+      }
+    }
+  ]
+...
+}
+```
+
+- Custom fonts: You can add arrays of fonts to the config, each of them must have: source, name. type. Source is a link to fonts source to download it. Name is name of font. Type is font type, must be one of: `thin`, `regular`, `medium`, `semiBold`, `bold`
+
+- Custom colors: contain color keys and color values. Color keys can be found here: [https://github.com/101digital/react-native-theme-component#colors](colors)
 
 3. Check required dependencies of auth-component inside tag `dependencies` in `config.json`. Make sure tag `dependencies` must have enough below data
 
