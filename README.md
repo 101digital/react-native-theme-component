@@ -405,7 +405,7 @@ type InputPhoneNumberStyles = {
 
 - Custom fonts: You can add arrays of fonts to the config, each of them must have: source, name. type. Source is a link to fonts source to download it. Name is name of font. Type is font type, must be one of: `thin`, `regular`, `medium`, `semiBold`, `bold`
 
-- Custom colors: contain color keys and color values. Color keys can be found here: [Colors props](### colors)
+- Custom colors: contain color keys and color values. Color keys can be found here: [Colors props](https://github.com/101digital/react-native-theme-component/blob/master/README.md#colors)
 
 3. Check required dependencies of auth-component inside tag `dependencies` in `config.json`. Make sure tag `dependencies` must have enough below data
 
