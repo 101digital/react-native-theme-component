@@ -403,7 +403,7 @@ type InputPhoneNumberStyles = {
 }
 ```
 
-- Custom fonts: You can add arrays of fonts to the config, each of them must have: source, name. type. Source is a link to fonts source to download it. Name is name of font. Type is font type, must be one of: `thin`, `regular`, `medium`, `semiBold`, `bold`
+- Custom fonts: You can add arrays of fonts to the config, each of them must have: source, name. type. Source is a link to fonts source to download it. Name is name of font. Type is one of fonts props name. Fonts props can be found here: [Fonts prps](https://github.com/101digital/react-native-theme-component/blob/master/README.md#fonts)
 
 - Custom colors: contain color keys and color values. Color keys can be found here: [Colors props](https://github.com/101digital/react-native-theme-component/blob/master/README.md#colors)
 
