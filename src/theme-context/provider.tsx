@@ -1,4 +1,4 @@
-import { defaultFont } from '@/fonts';
+import { defaultFont } from '../fonts';
 import { defaultsDeep, isEmpty } from 'lodash';
 import React, { ReactNode, useContext } from 'react';
 import {
