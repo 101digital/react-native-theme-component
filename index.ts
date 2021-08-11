@@ -14,3 +14,4 @@ export {
   useThemeColors,
   useThemeFonts,
 } from './src/theme-context';
+export { getDeviceCountryCode } from './src/country-picker/country-code'
