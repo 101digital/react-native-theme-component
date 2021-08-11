@@ -1,6 +1,6 @@
 {
   "name": "react-native-theme-component",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "A set of elements for base project",
   "repository": "https://github.com/101digital/react-native-theme-component.git",
   "license": "MIT",
@@ -15,12 +15,13 @@
   "keywords": [],
   "author": "tuyennguyen-101D",
   "dependencies": {
-    "lodash": "^4.17.21",
-    "react-native-svg": "^12.1.1",
-    "react-native-modal": "^12.0.2",
-    "react-native-masked-text": "^1.13.0",
     "formik": "^2.1.5",
-    "react-native-extra-dimensions-android": "^1.2.5"
+    "lodash": "^4.17.21",
+    "react-native-extra-dimensions-android": "^1.2.5",
+    "react-native-localize": "^2.1.1",
+    "react-native-masked-text": "^1.13.0",
+    "react-native-modal": "^12.0.2",
+    "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",

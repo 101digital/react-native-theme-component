@@ -54,8 +54,8 @@ const ErrorModal = (props: ErrorModalProps) => {
       onClose={onClose}
       title={error?.title!}
       message={error?.message!}
-      animationIn='fadeIn'
-      animationOut='fadeOut'
+      animationIn="fadeIn"
+      animationOut="fadeOut"
       leftIcon={leftIcon ?? <RiskIcon size={20} />}
       onConfirmed={onClose}
     >
