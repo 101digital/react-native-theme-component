@@ -2,20 +2,15 @@
   "id": "74a603bd-a36a-4f2b-bc18-385a4101878c",
   "name": "ThemeComponent",
   "repository": "https://github.com/101digital/react-native-theme-component",
-  "dependencies": [
-    {
-      "name": "lodash",
-      "version": "^4.17.19",
-      "typescript": {
-        "name": "@types/lodash",
-        "version": "^4.14.161"
-      }
-    },
-    { "name": "formik", "version": "^2.2.9" },
-    { "name": "react-native-masked-text", "version": "^1.13.0" },
-    { "name": "react-native-modal", "version": "^12.0.2" },
-    { "name": "react-native-svg", "version": "^12.1.1" }
-  ],
+  "dependencies": [],
   "templates": [],
-  "texts": {}
+  "texts": {
+    "common": {
+      "lbl_error": "Something went wrong",
+      "msg_error": "We are experiencing some temporary difficulties. Please try again later or contact our support team.",
+      "btn_confirm": "OK",
+      "btn_cancel": "Cancel",
+      "msg_error_id": "(Error: %s)"
+    }
+  }
 }

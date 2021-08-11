@@ -74,7 +74,7 @@ const AlertModal = (props: AlertModalProps) => {
     style,
     ...restProps
   } = props;
-  const { alert, colors } = useContext(ThemeContext);
+  const { alert, colors, i18n } = useContext(ThemeContext);
 
   const styles = defaultsDeep(style, alert);
 
@@ -145,7 +145,7 @@ const AlertModal = (props: AlertModalProps) => {
                 flex: 1,
               },
             }}
-            label={confirmTitle!}
+            label={confirmTitle ?? i18n?.t('common.btn_confirm') ?? 'OK'}
             onPress={onConfirmed}
           />
         </View>
@@ -156,7 +156,6 @@ const AlertModal = (props: AlertModalProps) => {
 
 AlertModal.defaultProps = {
   isVisible: false,
-  confirmTitle: 'OK',
   horizontalSpace: 20,
   backdropOpacity: 0.5,
   animationIn: 'fadeIn',

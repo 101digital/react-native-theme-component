@@ -18,14 +18,6 @@ yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git
 
 Make sure you have permission to access this repository
 
-Because <b>react-native-theme-component</b> depends on some libraries, so make sure you installed all dependencies into your project.
-
-- Lodash: https://github.com/lodash/lodash
-- Formik: https://github.com/formium/formik
-- Masked Text: https://github.com/benhurott/react-native-masked-text
-- React Native Modal: https://github.com/react-native-modal/react-native-modal
-- Svg display: https://github.com/react-native-svg/react-native-svg
-
 ## Quick Start
 
 Before using this component, you must wrap your components with `ThemProvider` in your `app.ts`

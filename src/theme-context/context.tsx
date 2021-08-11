@@ -1,5 +1,7 @@
 import React from 'react';
 import { useMemo, useState } from 'react';
+import { ErrorModalStyles } from '../error-modal';
+import defaultErrorModalTheme from '../error-modal/theme';
 import { AlertModalStyles } from '../alert';
 import defaultAlertTheme from '../alert/theme';
 import { BottomSheetModalStyles } from '../bottom-sheet';
@@ -22,6 +24,7 @@ export const defaultTheme = (fonts: ThemeFontProps): ThemeProps => {
     bottomSheet: defaultBottomSheetTheme,
     inputField: defaultInputFieldTheme(fonts),
     inputPhoneNumber: defaultInputPhoneNumberTheme(fonts),
+    errorModal: defaultErrorModalTheme(fonts),
   };
 };
 
@@ -33,6 +36,7 @@ export type ThemeProps = {
   bottomSheet: BottomSheetModalStyles;
   inputField: InputFieldStyles;
   inputPhoneNumber: InputPhoneNumberStyles;
+  errorModal: ErrorModalStyles;
 };
 
 export interface ThemeContextData {
@@ -43,6 +47,8 @@ export interface ThemeContextData {
   bottomSheet: BottomSheetModalStyles;
   inputField: InputFieldStyles;
   inputPhoneNumber: InputPhoneNumberStyles;
+  errorModal: ErrorModalStyles;
+  i18n?: any;
 }
 
 export const themeDefaultValue: ThemeContextData = {
@@ -52,12 +58,13 @@ export const themeDefaultValue: ThemeContextData = {
   alert: {},
   bottomSheet: {},
   inputField: {},
+  errorModal: {},
   inputPhoneNumber: {},
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeDefaultValue);
 
-export const useThemeContextValue = (initial: ThemeProps): ThemeContextData => {
+export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): ThemeContextData => {
   const [colors] = useState<ThemeColorProps>(initial.colors ?? {});
   const [fonts] = useState<ThemeFontProps>(initial.fonts ?? {});
   const [button] = useState<ButtonStyles>(initial.button ?? {});
@@ -65,6 +72,8 @@ export const useThemeContextValue = (initial: ThemeProps): ThemeContextData => {
   const [bottomSheet] = useState<BottomSheetModalStyles>(initial.bottomSheet ?? {});
   const [inputField] = useState<InputFieldStyles>(initial.inputField ?? {});
   const [inputPhoneNumber] = useState<InputPhoneNumberStyles>(initial.inputPhoneNumber ?? {});
+  const [errorModal] = useState<ErrorModalStyles>(initial.errorModal ?? {});
+  const [i18n] = useState<any>(initI18n);
 
   return useMemo(
     () => ({
@@ -75,7 +84,9 @@ export const useThemeContextValue = (initial: ThemeProps): ThemeContextData => {
       bottomSheet,
       inputField,
       inputPhoneNumber,
+      i18n,
+      errorModal,
     }),
-    [colors, fonts, button, alert, bottomSheet, inputField, inputPhoneNumber]
+    [colors, fonts, button, alert, bottomSheet, inputField, inputPhoneNumber, i18n, errorModal]
   );
 };

@@ -12,6 +12,7 @@ import {
 export type BankingProviderProps = {
   children: ReactNode;
   theme: ThemeProps;
+  i18n?: any;
 };
 
 export const createThemeData = (theme: ThemeProps): ThemeContextData => {
@@ -23,8 +24,8 @@ export const createThemeData = (theme: ThemeProps): ThemeContextData => {
 };
 
 export const ThemeProvider = (props: BankingProviderProps) => {
-  const { children, theme } = props;
-  const themeContextData = useThemeContextValue(theme);
+  const { children, theme, i18n } = props;
+  const themeContextData = useThemeContextValue(theme, i18n);
 
   return <ThemeContext.Provider value={themeContextData}>{children}</ThemeContext.Provider>;
 };
