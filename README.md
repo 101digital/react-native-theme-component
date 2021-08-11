@@ -18,6 +18,8 @@ yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git
 
 Make sure you have permission to access this repository
 
+The theme-component is using [react-native-localize](https://github.com/zoontek/react-native-localize) to get default country code for iOS device. Make sure you install and link `react-native-localize` to your app.
+
 ## Quick Start
 
 Before using this component, you must wrap your components with `ThemProvider` in your `app.ts`
