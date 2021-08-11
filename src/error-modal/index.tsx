@@ -5,17 +5,19 @@ import AlertModal from '../alert/index';
 import { ThemeContext } from '../theme-context';
 import { defaultsDeep } from 'lodash';
 
+export interface ErrorData {
+  title: string;
+  message: string;
+  errorCode?: number;
+  errorId?: string;
+}
+
 export type ErrorModalStyles = {
   errorIdTextStyle?: StyleProp<TextStyle>;
 };
 
 export type ErrorModalProps = {
-  error?: {
-    title: string;
-    message: string;
-    errorCode?: number;
-    errorId?: string;
-  };
+  error?: ErrorData;
   timeOut?: boolean;
   timeLimit?: number;
   leftIcon?: ReactNode;
@@ -54,8 +56,8 @@ const ErrorModal = (props: ErrorModalProps) => {
       onClose={onClose}
       title={error?.title!}
       message={error?.message!}
-      animationIn="fadeIn"
-      animationOut="fadeOut"
+      animationIn='fadeIn'
+      animationOut='fadeOut'
       leftIcon={leftIcon ?? <RiskIcon size={20} />}
       onConfirmed={onClose}
     >
