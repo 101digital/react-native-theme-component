@@ -24,7 +24,7 @@ export type ErrorModalProps = {
 };
 
 const ErrorModal = (props: ErrorModalProps) => {
-  const { errorModal } = useContext(ThemeContext);
+  const { errorModal, i18n } = useContext(ThemeContext);
   const { error, timeLimit, timeOut, onClose, leftIcon, style } = props;
   const [isShowError, setShowError] = useState<boolean>(false);
 
@@ -54,13 +54,16 @@ const ErrorModal = (props: ErrorModalProps) => {
       onClose={onClose}
       title={error?.title!}
       message={error?.message!}
-      animationIn="fadeIn"
-      animationOut="fadeOut"
+      animationIn='fadeIn'
+      animationOut='fadeOut'
       leftIcon={leftIcon ?? <RiskIcon size={20} />}
       onConfirmed={onClose}
     >
       {error?.errorId && (
-        <Text style={styles.errorIdTextStyle}>{`(Error: ${error?.errorId})`}</Text>
+        <Text style={styles.errorIdTextStyle}>
+          {i18n?.t('common.msg_error_id')?.replace('%s', error?.errorId) ??
+            `(Error: ${error?.errorId})`}
+        </Text>
       )}
     </AlertModal>
   );

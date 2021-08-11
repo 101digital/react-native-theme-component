@@ -9,7 +9,8 @@
       "lbl_error": "Something went wrong",
       "msg_error": "We are experiencing some temporary difficulties. Please try again later or contact our support team.",
       "btn_confirm": "OK",
-      "btn_cancel": "Cancel"
+      "btn_cancel": "Cancel",
+      "msg_error_id": "(Error: %s)"
     }
   }
 }
