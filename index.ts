@@ -3,7 +3,7 @@ export { default as Button } from './src/button';
 export { default as BottomSheet } from './src/bottom-sheet';
 export { default as InputField, InputFieldStyles } from './src/input-field';
 export { default as InputPhoneNumber, InputPhoneNumberStyles } from './src/input-phone-number';
-export { default as ErrorModal, ErrorData } from './src/error-modal'
+export { default as ErrorModal, ErrorData } from './src/error-modal';
 export { default as Image } from './src/image';
 export {
   ThemeContext,
@@ -12,4 +12,5 @@ export {
   useThemeColors,
   useThemeFonts,
 } from './src/theme-context';
-export { getDeviceCountryCode } from './src/country-picker/country-code'
+export { getDeviceCountryCode } from './src/country-picker/country-code';
+export { default as CountryPicker } from './src/country-picker';

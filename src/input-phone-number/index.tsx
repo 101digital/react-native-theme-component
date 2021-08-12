@@ -114,7 +114,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
           style={styles.dialContainerStyle}
           onPress={onPressDialCode}
         >
-          <Text style={styles.dialTextStyle}>{`+${dialCode}`}</Text>
+          <Text style={styles.dialTextStyle}>{dialCode}</Text>
           <ArrowDownIcon width={10} height={10} color={'black'} />
         </TouchableOpacity>
         <View style={styles.inputContainerStyle}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMemo, useState } from 'react';
 import { ErrorModalStyles } from '../error-modal';
 import defaultErrorModalTheme from '../error-modal/theme';
@@ -14,6 +14,12 @@ import { InputFieldStyles } from '../input-field';
 import defaultInputFieldTheme from '../input-field/theme';
 import { InputPhoneNumberStyles } from '../input-phone-number';
 import defaultInputPhoneNumberTheme from '../input-phone-number/theme';
+import { CountryInformation } from '../country-picker/types';
+import { localCountry, countryServices } from '../services';
+import { getDeviceCountryCode } from '../country-picker/country-code';
+import { filter, find, isEmpty } from 'lodash';
+import { CountryPickerStyles } from '../country-picker';
+import defaultCountryPickerTheme from '../country-picker/theme';
 
 export const defaultTheme = (fonts: ThemeFontProps): ThemeProps => {
   return {
@@ -25,6 +31,7 @@ export const defaultTheme = (fonts: ThemeFontProps): ThemeProps => {
     inputField: defaultInputFieldTheme(fonts),
     inputPhoneNumber: defaultInputPhoneNumberTheme(fonts),
     errorModal: defaultErrorModalTheme(fonts),
+    countryPicker: defaultCountryPickerTheme(fonts),
   };
 };
 
@@ -37,6 +44,7 @@ export type ThemeProps = {
   inputField: InputFieldStyles;
   inputPhoneNumber: InputPhoneNumberStyles;
   errorModal: ErrorModalStyles;
+  countryPicker: CountryPickerStyles;
 };
 
 export interface ThemeContextData {
@@ -48,7 +56,11 @@ export interface ThemeContextData {
   inputField: InputFieldStyles;
   inputPhoneNumber: InputPhoneNumberStyles;
   errorModal: ErrorModalStyles;
+  countryPicker: CountryPickerStyles;
   i18n?: any;
+  countries: CountryInformation[];
+  deviceCountryCode: string;
+  isLoadingCountry: boolean;
 }
 
 export const themeDefaultValue: ThemeContextData = {
@@ -60,6 +72,10 @@ export const themeDefaultValue: ThemeContextData = {
   inputField: {},
   errorModal: {},
   inputPhoneNumber: {},
+  countryPicker: {},
+  countries: [],
+  deviceCountryCode: '65',
+  isLoadingCountry: false,
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeDefaultValue);
@@ -73,7 +89,51 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
   const [inputField] = useState<InputFieldStyles>(initial.inputField ?? {});
   const [inputPhoneNumber] = useState<InputPhoneNumberStyles>(initial.inputPhoneNumber ?? {});
   const [errorModal] = useState<ErrorModalStyles>(initial.errorModal ?? {});
+  const [countryPicker] = useState<CountryPickerStyles>(initial.countryPicker ?? {});
   const [i18n] = useState<any>(initI18n);
+  const [countries, setCountries] = useState<CountryInformation[]>([]);
+  const [deviceCountryCode, setDeviceCountryCode] = useState<string>('65');
+  const [isLoadingCountry, setLoadingCountry] = useState(false);
+
+  useEffect(() => {
+    getCurrentCountries();
+  }, []);
+
+  useEffect(() => {
+    getCountryCode();
+  }, [countries]);
+
+  const getCurrentCountries = async () => {
+    try {
+      setLoadingCountry(true);
+      const _localCountries = await localCountry.getCountries();
+      if (_localCountries.length === 0) {
+        const _countries = await countryServices.getCountries();
+        const filteredCountried = filter(
+          _countries,
+          (country) => !isEmpty(country.attributes.idd) && country.attributes.idd !== 'NONE'
+        );
+        await localCountry.storeCountries(filteredCountried);
+        setCountries(filteredCountried);
+      } else {
+        setCountries(_localCountries);
+      }
+      setLoadingCountry(false);
+    } catch (error) {
+      setCountries([]);
+      setLoadingCountry(false);
+    }
+  };
+
+  const getCountryCode = async () => {
+    const _countryCode = await getDeviceCountryCode();
+    if (!isEmpty(countries) && _countryCode) {
+      const data = find(countries, (c) => c.attributes.code2 === _countryCode);
+      if (data) {
+        setDeviceCountryCode(data.attributes.idd);
+      }
+    }
+  };
 
   return useMemo(
     () => ({
@@ -86,7 +146,25 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       inputPhoneNumber,
       i18n,
       errorModal,
+      countries,
+      deviceCountryCode,
+      countryPicker,
+      isLoadingCountry,
     }),
-    [colors, fonts, button, alert, bottomSheet, inputField, inputPhoneNumber, i18n, errorModal]
+    [
+      colors,
+      fonts,
+      button,
+      alert,
+      bottomSheet,
+      inputField,
+      inputPhoneNumber,
+      i18n,
+      errorModal,
+      countries,
+      deviceCountryCode,
+      countryPicker,
+      isLoadingCountry,
+    ]
   );
 };

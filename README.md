@@ -18,7 +18,9 @@ yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git
 
 Make sure you have permission to access this repository
 
-The theme-component is using [react-native-localize](https://github.com/zoontek/react-native-localize) to get default country code for iOS device. Make sure you install and link `react-native-localize` to your app.
+- The theme-component is using [react-native-localize](https://github.com/zoontek/react-native-localize) to get default country code for iOS device. Make sure you install and link `react-native-localize` to your app.
+
+- The theme-component is using ['react-native-async-storage'](https://react-native-async-storage.github.io/async-storage/) to save countries data. Make sure you install and link `react-native-async-storage` to your app.
 
 ## Quick Start
 

@@ -11,6 +11,10 @@
       "btn_confirm": "OK",
       "btn_cancel": "Cancel",
       "msg_error_id": "(Error: %s)"
+    },
+    "country_picker": {
+      "lbl_select_country": "Select a country",
+      "plh_search_country": "Search country"
     }
   }
 }
