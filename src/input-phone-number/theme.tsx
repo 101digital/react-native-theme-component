@@ -39,6 +39,7 @@ const defaultInputPhoneNumberTheme = (fonts: ThemeFontProps): InputPhoneNumberSt
       fontSize: 16,
       color: 'black',
       marginRight: 5,
+      fontFamily: fonts.regular,
     },
   });
 };
