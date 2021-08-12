@@ -10,7 +10,7 @@
 
 ## Installation
 
-To add this component to React Native app, run this command:
+To add the theme-component to React Native app, run this command:
 
 ```
 yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git
@@ -26,7 +26,7 @@ Make sure you have permission to access this repository
 
 ## Quick Start
 
-Before using this component, you must wrap your components with `ThemProvider` in your `app.ts`
+- Before using the theme-component, you must wrap your app with `ThemProvider` in your `app.ts`
 
 ```javascript
 import { ThemeProvider } from 'react-native-theme-component';
@@ -36,7 +36,7 @@ const App = () => {
 };
 ```
 
-You can create your theme data by using `createThemeData` function. Or elese, default theme will be used.
+- You can create your theme data by using `createThemeData` function. Or elese, default theme will be used.
 
 ```javascript
 import { createThemeData } from 'react-native-theme-component';
@@ -53,25 +53,18 @@ const yourThemeData = createThemeData({
 export default yourThemeData;
 ```
 
-#### Note: If you use default font family (Poppins), you need some steps to link default font to your app
-
-1. Create `react-native.config.js` in root folder
-2. Add assets folder path <b>'./node_modules/react-native-theme-component/src/assets/fonts'</b> to config
+- If you wanna use multiple language, pass your translate function to `i18n` props, like below:
 
 ```javascript
-module.exports = {
-  project: {
-    ios: {},
-    android: {},
-  },
-  assets: ['./src/assets/fonts', './node_modules/react-native-theme-component/src/assets/fonts'],
+import { ThemeProvider } from 'react-native-theme-component';
+
+const App = () => {
+  return (
+    <ThemProvider theme={yourThemeData} i18n={translate_func}>
+      /* YOUR COMPONENTS */
+    </ThemProvider>
+  );
 };
-```
-
-3. Run link assets command
-
-```
-npx react-native link
 ```
 
 ## API reference
@@ -101,7 +94,6 @@ Additional, or can use prodive hooks function to acceess `colors` or `fonts`
 import { ThemeContext, useThemeFonts, useThemeColors } from 'react-native-theme-component';
 
 const YourComponent = () => {
-
    // const { fonts, colors } = useContext(ThemeContext)
     const fonts = useThemeFonts();
     const colors = useThemeColors();
@@ -114,58 +106,33 @@ const YourComponent = () => {
 
 ### `colors`
 
-- Props
+The colors are being used for elements inside the theme-component or in your app as well. ThemeColorProps and default values can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/colors.ts)
 
-```javascript
-type ThemeColorProps = {
-  primaryColor?: string,
-  secondaryColor?: string,
-  primaryTextColor?: string,
-  secondaryTextColor?: string,
-  primaryButtonColor?: string,
-  secondaryButtonColor?: string,
-  primaryButtonLabelColor?: string,
-  secondaryButtonLabelColor?: string,
-  mainBackgroundColor?: string,
-  secondaryBackgroundColor?: string,
-  dividerColor?: string,
-  appBarBackgroundColor?: string,
-  appBarTextColor?: string,
-};
-```
-
-- Default values
-
-```javascript
-const defaultColors: ThemeColorProps = {
-  primaryColor: '#0073F0',
-  secondaryColor: '#0073F0',
-  primaryTextColor: '#0C3F79',
-  secondaryTextColor: '#0C3F79',
-  primaryButtonColor: '#0073F0',
-  secondaryButtonColor: '#ffffff',
-  primaryButtonLabelColor: '#ffffff',
-  secondaryButtonLabelColor: '#0073F0',
-  mainBackgroundColor: '#ffffff',
-  secondaryBackgroundColor: '#f7f9fb',
-  dividerColor: '#E6E6E6',
-  appBarBackgroundColor: '$ffffff',
-  appBarTextColor: '#0C3F79',
-};
-```
+- Props [here]()
 
 ### `fonts`
 
-Default is using system fonts
+The fonts are being used for element inside the theme-component or in your app as well. ThemeFontProps can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/fonts.ts)
+
+#### Note: If you use default font family (Poppins), you need some steps to link default font to your app.
+
+1. Create `react-native.config.js` in root folder
+2. Add assets folder path <b>'./node_modules/react-native-theme-component/src/assets/fonts'</b> to config
 
 ```javascript
-type ThemeFontProps = {
-  thin?: string,
-  regular?: string,
-  medium?: string,
-  semiBold?: string,
-  bold?: string,
+module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: ['./src/assets/fonts', './node_modules/react-native-theme-component/src/assets/fonts'],
 };
+```
+
+3. Run link assets command
+
+```
+npx react-native link
 ```
 
 ### Button
@@ -183,17 +150,7 @@ type ThemeFontProps = {
 | ...restProps     | TouchableOpacityProps (Optional)    | Other ToucableOpacity props (onPress, disabled ...)              |
 | style            | ButtonStyles (Optional)             | Button styles                                                    |
 
-- ButtonStyles
-
-```javascript
-type ButtonStyles = {
-  primaryContainerStyle?: StyleProp<ViewStyle>,
-  secondaryContainerStyle?: StyleProp<ViewStyle>,
-  primaryLabelStyle?: StyleProp<TextStyle>,
-  secondaryLabelStyle?: StyleProp<TextStyle>,
-  loadingWrapperStyle?: StyleProp<ViewStyle>,
-};
-```
+- Button styles can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/button/index.tsx)
 
 ### Alert
 
@@ -223,21 +180,7 @@ type ButtonStyles = {
 | onModalHide        | Function (Optional)                  | Callback function when alert hiden                                                  |
 | style              | AlertModalStyles (Optional)          |                                                                                     |
 
-- Styles
-
-```javascript
-type AlertModalStyles = {
-  modalStyle?: StyleProp<ViewStyle>,
-  containerStyle?: StyleProp<ViewStyle>,
-  headerStyle?: StyleProp<ViewStyle>,
-  titleTextStyle?: StyleProp<TextStyle>,
-  bodyStyle?: StyleProp<ViewStyle>,
-  messageTextStyle?: StyleProp<TextStyle>,
-  footerStyle?: StyleProp<ViewStyle>,
-  leftIconStyle?: StyleProp<ViewStyle>,
-  closeButtonStyle?: StyleProp<ViewStyle>,
-};
-```
+- Alert styles can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/alert/index.tsx)
 
 ### BottomSheet
 
@@ -257,15 +200,7 @@ type AlertModalStyles = {
 | onModalHide        | Function (Optional)                  | Callback function when bottom sheet hiden                   |
 | style              | BottomSheetModalStyles (Optional)    |                                                             |
 
-- Styles
-
-```javascript
-type BottomSheetModalStyles = {
-  modalStyle?: StyleProp<ViewStyle>,
-  containerStyle?: StyleProp<ViewStyle>,
-  contentContainerStyle?: StyleProp<ViewStyle>,
-};
-```
+- Bottom-sheet styles can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/bottom-sheet/index.tsx)
 
 ### Image
 
@@ -293,17 +228,7 @@ type BottomSheetModalStyles = {
 | formatError          | Function return string (Optional)   | Format in-line error message, example translate error message by locale |
 | ...restProps         | TextInputProps & TextInputMaskProps | Props of text input and text input mask                                 |
 
-- Styles
-
-```javascript
-type InputFieldStyles = {
-  containerStyle?: StyleProp<ViewStyle>,
-  contentContainerStyle?: StyleProp<ViewStyle>,
-  inputContainerStyle?: StyleProp<ViewStyle>,
-  textInputStyle?: StyleProp<TextStyle>,
-  errorTextStyle?: StyleProp<TextStyle>,
-};
-```
+- Input styles can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/input-field/index.tsx)
 
 ### InputPhoneNumber
 
@@ -324,23 +249,11 @@ type InputFieldStyles = {
 | formatError          | Function return string (Optional)   | Format in-line error message, example translate error message by locale |
 | ...restProps         | TextInputProps & TextInputMaskProps | Props of text input and text input mask                                 |
 
-- Styles
-
-```javascript
-type InputPhoneNumberStyles = {
-  containerStyle?: StyleProp<ViewStyle>,
-  contentContainerStyle?: StyleProp<ViewStyle>,
-  inputContainerStyle?: StyleProp<ViewStyle>,
-  textInputStyle?: StyleProp<TextStyle>,
-  errorTextStyle?: StyleProp<TextStyle>,
-  dialContainerStyle?: StyleProp<ViewStyle>,
-  dialTextStyle?: StyleProp<TextStyle>,
-};
-```
+- Input phone number styles can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/input-phone-number/index.tsx)
 
 ### Add component to the config.json file manually
 
-1. Make sure you synced latest local data in `theme-component.json` into `theme-component.json`[https://github.com/101digital/components-data/blob/main/data/theme-component.json]
+1. Make sure you synced latest local data in `theme-component.json` into [theme-component.json](https://github.com/101digital/components-data/blob/main/data/theme-component.json). They should be synced once you update
 
 2. Add the theme-component to `components` tags. The theme-component have `componentId` is "74a603bd-a36a-4f2b-bc18-385a4101878c" and it can't be changed.
 
@@ -371,23 +284,23 @@ type InputPhoneNumberStyles = {
       "config": {
         "fonts": [
           {
-            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-Regular.ttf",
-            "name": "STIXTwoText-Regular.ttf",
+            "source": "https://link-to-regular-font",
+            "name": "Regular.ttf",
             "type": "regular"
           },
           {
-            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-Medium.ttf",
-            "name": "STIXTwoText-Medium.ttf",
+            "source": "https://link-to-medium-font",
+            "name": "Medium.ttf",
             "type": "medium"
           },
           {
-            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-SemiBold.ttf",
-            "name": "STIXTwoText-SemiBold.ttf",
+            "source": "https://link-to-semibold-font",
+            "name": "SemiBold.ttf",
             "type": "semiBold"
           },
           {
-            "source": "https://github.com/101digital/react-native-theme-component/raw/custom-fonts/src/assets/custom-fonts/STIXTwoText-Bold.ttf",
-            "name": "STIXTwoText-Bold.ttf",
+            "source": "https://link-to-bold-font",
+            "name": "Bold.ttf",
             "type": "bold"
           }
         ],
@@ -411,6 +324,8 @@ type InputPhoneNumberStyles = {
 {
 ...
  "dependencies": [
+    { "name": "@react-native-async-storage/async-storage", "version": "^1.15.5" },
+    { "name": "react-native-localize", "version": "^2.1.1" },
     {
       "name": "lodash",
       "version": "^4.17.19",
@@ -422,7 +337,9 @@ type InputPhoneNumberStyles = {
     { "name": "formik", "version": "^2.2.9" },
     { "name": "react-native-masked-text", "version": "^1.13.0" },
     { "name": "react-native-modal", "version": "^12.0.2" },
-    { "name": "react-native-svg", "version": "^12.1.1" }
+    { "name": "react-native-svg", "version": "^12.1.1" },
+    { "name": "react-native-extra-dimensions-android", "version": "^1.2.5"},
+    { "name": "react-native-keyboard-aware-scroll-view", "version": "^0.9.3"}
   ],
 ...
 }
