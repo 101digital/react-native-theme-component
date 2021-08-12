@@ -111,15 +111,17 @@ const CountryPicker = (props: CountryPickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn="slideInUp"
-      animationOut="slideOutDown"
+      animationIn='slideInUp'
+      animationOut='slideOutDown'
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
     >
       <View style={styles.topSpacer} />
       <SafeAreaView style={styles.containerStyle}>
         <View style={innerStyles.header}>
-          <Text style={styles.headerTextStyle}>{i18n.t('country_picker.lbl_select_country')}</Text>
+          <Text style={styles.headerTextStyle}>
+            {i18n?.t('country_picker.lbl_select_country') ?? 'Select a country'}
+          </Text>
           <TouchableOpacity onPress={onClose} style={innerStyles.closeButton}>
             <CloseIcon width={15} height={15} />
           </TouchableOpacity>
@@ -130,7 +132,7 @@ const CountryPicker = (props: CountryPickerProps) => {
               <TextInput
                 ref={searchRef}
                 style={styles.searchInput}
-                placeholder={i18n.t('country_picker.plh_search_country')}
+                placeholder={i18n?.t('country_picker.plh_search_country') ?? 'Search country'}
                 placeholderTextColor={'gray'}
                 returnKeyType={'search'}
                 onChangeText={(text: string) => {
@@ -149,7 +151,7 @@ const CountryPicker = (props: CountryPickerProps) => {
             keyExtractor={(item, index) => `${item.id}-${index}`}
             data={_currentCountries}
             contentContainerStyle={styles.listContentContainerStyle}
-            keyboardShouldPersistTaps="handled"
+            keyboardShouldPersistTaps='handled'
             renderItem={({ item }) => (
               <ItemCountryCode
                 icon={{
