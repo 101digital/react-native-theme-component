@@ -25,15 +25,23 @@ interface ComponentProps {
 export type ItemCountryProps = ComponentProps & TouchableOpacityProps;
 
 const ItemCountryCode = (props: ItemCountryProps) => {
-  const { icon, countryCode, countryName, flagStyle, countryCodeStyle, countryNameStyle } = props;
+  const {
+    icon,
+    countryCode,
+    countryName,
+    flagStyle,
+    countryCodeStyle,
+    countryNameStyle,
+    ...restProps
+  } = props;
 
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.8}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.8} {...restProps}>
       <View style={flagStyle}>
         <Image
           source={icon}
           style={styles.image}
-          resizeMode="stretch"
+          resizeMode='stretch'
           borderRadius={Platform.OS === 'android' ? undefined : 5}
         />
       </View>
