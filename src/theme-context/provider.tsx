@@ -8,6 +8,7 @@ import {
   ThemeProps,
   useThemeContextValue,
 } from './context';
+import { defaultColors } from '../colors';
 
 export type BankingProviderProps = {
   children: ReactNode;
@@ -20,7 +21,11 @@ export const createThemeData = (theme: ThemeProps): ThemeContextData => {
   if (isEmpty(_fonts)) {
     _fonts = defaultFont;
   }
-  return defaultsDeep(theme, defaultTheme(_fonts));
+  let _colors = theme.colors;
+  if (isEmpty(_colors)) {
+    _colors = defaultColors;
+  }
+  return defaultsDeep(theme, defaultTheme(_fonts, _colors));
 };
 
 export const ThemeProvider = (props: BankingProviderProps) => {

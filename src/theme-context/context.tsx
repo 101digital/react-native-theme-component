@@ -20,18 +20,21 @@ import { getDeviceCountryCode } from '../country-picker/country-code';
 import { filter, find, isEmpty } from 'lodash';
 import { CountryPickerStyles } from '../country-picker';
 import defaultCountryPickerTheme from '../country-picker/theme';
+import { DatePickerStyles } from '../date-picker';
+import defaultDatePickerTheme from '../date-picker/theme';
 
-export const defaultTheme = (fonts: ThemeFontProps): ThemeProps => {
+export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): ThemeProps => {
   return {
     colors: defaultColors,
-    button: defaultButtonTheme(fonts),
-    alert: defaultAlertTheme(fonts),
+    button: defaultButtonTheme(fonts, colors),
+    alert: defaultAlertTheme(fonts, colors),
     fonts: defaultFont,
     bottomSheet: defaultBottomSheetTheme,
-    inputField: defaultInputFieldTheme(fonts),
-    inputPhoneNumber: defaultInputPhoneNumberTheme(fonts),
+    inputField: defaultInputFieldTheme(fonts, colors),
+    inputPhoneNumber: defaultInputPhoneNumberTheme(fonts, colors),
     errorModal: defaultErrorModalTheme(fonts),
     countryPicker: defaultCountryPickerTheme(fonts),
+    datePicker: defaultDatePickerTheme(fonts, colors),
   };
 };
 
@@ -45,6 +48,7 @@ export type ThemeProps = {
   inputPhoneNumber: InputPhoneNumberStyles;
   errorModal: ErrorModalStyles;
   countryPicker: CountryPickerStyles;
+  datePicker: DatePickerStyles;
 };
 
 export interface ThemeContextData {
@@ -57,6 +61,7 @@ export interface ThemeContextData {
   inputPhoneNumber: InputPhoneNumberStyles;
   errorModal: ErrorModalStyles;
   countryPicker: CountryPickerStyles;
+  datePicker: DatePickerStyles;
   i18n?: any;
   countries: CountryInformation[];
   deviceCountryCode: string;
@@ -73,6 +78,7 @@ export const themeDefaultValue: ThemeContextData = {
   errorModal: {},
   inputPhoneNumber: {},
   countryPicker: {},
+  datePicker: {},
   countries: [],
   deviceCountryCode: '65',
   isLoadingCountry: false,
@@ -94,6 +100,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
   const [countries, setCountries] = useState<CountryInformation[]>([]);
   const [deviceCountryCode, setDeviceCountryCode] = useState<string>('65');
   const [isLoadingCountry, setLoadingCountry] = useState(false);
+  const [datePicker] = useState<DatePickerStyles>(initial.datePicker ?? {});
 
   useEffect(() => {
     getCurrentCountries();
@@ -150,6 +157,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       deviceCountryCode,
       countryPicker,
       isLoadingCountry,
+      datePicker,
     }),
     [
       colors,
@@ -165,6 +173,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       deviceCountryCode,
       countryPicker,
       isLoadingCountry,
+      datePicker,
     ]
   );
 };

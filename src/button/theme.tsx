@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { ButtonStyles } from '.';
 import { ThemeFontProps } from '../fonts';
+import { ThemeColorProps } from '../colors';
 
-const defaultButtonTheme = (fonts: ThemeFontProps): ButtonStyles => {
+const defaultButtonTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): ButtonStyles => {
   return StyleSheet.create({
     primaryContainerStyle: {
       height: 42,
@@ -10,7 +11,7 @@ const defaultButtonTheme = (fonts: ThemeFontProps): ButtonStyles => {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#0073F0',
+      backgroundColor: colors.primaryButtonColor,
     },
     secondaryContainerStyle: {
       height: 42,
@@ -18,17 +19,17 @@ const defaultButtonTheme = (fonts: ThemeFontProps): ButtonStyles => {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#ffffff',
+      backgroundColor: colors.secondaryButtonColor,
     },
     primaryLabelStyle: {
       fontSize: 14,
-      color: 'white',
+      color: colors.primaryButtonLabelColor,
       letterSpacing: 1.1,
       fontFamily: fonts.medium,
     },
     secondaryLabelStyle: {
       fontSize: 14,
-      color: '#0073F0',
+      color: colors.secondaryButtonLabelColor,
       letterSpacing: 1.1,
       fontFamily: fonts.medium,
     },

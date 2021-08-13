@@ -1,27 +1,9 @@
-import { Dimensions, Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { CountryPickerStyles } from '.';
 import { ThemeFontProps } from '../fonts';
+import { isIphoneX } from '../utils/device-utils';
 
 const defaultCountryPickerTheme = (fonts: ThemeFontProps): CountryPickerStyles => {
-  function isIphoneX() {
-    const dimen = Dimensions.get('window');
-    return (
-      Platform.OS === 'ios' &&
-      !Platform.isPad &&
-      !Platform.isTVOS &&
-      (dimen.height === 780 ||
-        dimen.width === 780 ||
-        dimen.height === 812 ||
-        dimen.width === 812 ||
-        dimen.height === 844 ||
-        dimen.width === 844 ||
-        dimen.height === 896 ||
-        dimen.width === 896 ||
-        dimen.height === 926 ||
-        dimen.width === 926)
-    );
-  }
-
   return StyleSheet.create({
     headerTextStyle: {
       flex: 1,

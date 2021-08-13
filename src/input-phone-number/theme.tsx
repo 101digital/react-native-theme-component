@@ -1,8 +1,12 @@
 import { ThemeFontProps } from '../fonts';
 import { Platform, StyleSheet } from 'react-native';
 import { InputPhoneNumberStyles } from '.';
+import { ThemeColorProps } from '../colors';
 
-const defaultInputPhoneNumberTheme = (fonts: ThemeFontProps): InputPhoneNumberStyles => {
+const defaultInputPhoneNumberTheme = (
+  fonts: ThemeFontProps,
+  colors: ThemeColorProps
+): InputPhoneNumberStyles => {
   return StyleSheet.create({
     contentContainerStyle: {
       flexDirection: 'row',
@@ -19,7 +23,7 @@ const defaultInputPhoneNumberTheme = (fonts: ThemeFontProps): InputPhoneNumberSt
       flex: 1,
       marginHorizontal: 10,
       fontSize: 16,
-      color: 'black',
+      color: colors.primaryTextColor,
       fontFamily: fonts.regular,
     },
     errorTextStyle: {
@@ -37,7 +41,7 @@ const defaultInputPhoneNumberTheme = (fonts: ThemeFontProps): InputPhoneNumberSt
     },
     dialTextStyle: {
       fontSize: 16,
-      color: 'black',
+      color: colors.primaryTextColor,
       marginRight: 5,
       fontFamily: fonts.regular,
     },

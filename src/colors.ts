@@ -25,7 +25,7 @@ export const defaultColors: ThemeColorProps = {
   secondaryButtonLabelColor: '#0073F0',
   mainBackgroundColor: '#ffffff',
   secondaryBackgroundColor: '#f7f9fb',
-  dividerColor: '#E6E6E6',
+  dividerColor: '#e2e2e2',
   appBarBackgroundColor: '$ffffff',
   appBarTextColor: '#0C3F79',
 };

@@ -19,6 +19,11 @@
     "country_picker": {
       "lbl_select_country": "Select a country",
       "plh_search_country": "Search country"
+    },
+    "date_picker": {
+      "btn_close": "Close",
+      "btn_done": "Done",
+      "lbl_select_date": "Select Date"
     }
   }
 }

@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { AlertModalStyles } from '.';
 import { ThemeFontProps } from '../fonts';
+import { ThemeColorProps } from '../colors';
 
-const defaultAlertTheme = (fonts: ThemeFontProps): AlertModalStyles => {
+const defaultAlertTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): AlertModalStyles => {
   return StyleSheet.create({
     modalStyle: {
       justifyContent: 'center',
@@ -29,7 +30,7 @@ const defaultAlertTheme = (fonts: ThemeFontProps): AlertModalStyles => {
       fontSize: 16,
       flex: 1,
       paddingVertical: 15,
-      color: 'black',
+      color: colors.primaryTextColor,
       paddingLeft: 0,
       fontFamily: fonts.medium,
     },
@@ -42,7 +43,7 @@ const defaultAlertTheme = (fonts: ThemeFontProps): AlertModalStyles => {
     },
     messageTextStyle: {
       fontSize: 15,
-      color: 'black',
+      color: colors.primaryTextColor,
       fontFamily: fonts.regular,
     },
   });
