@@ -3,7 +3,7 @@ import { AlertModalStyles } from '.';
 import { ThemeFontProps } from '../fonts';
 import { ThemeColorProps } from '../colors';
 
-const defaultAlertTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): AlertModalStyles => {
+const defaultAlertTheme = (fonts: ThemeFontProps, _: ThemeColorProps): AlertModalStyles => {
   return StyleSheet.create({
     modalStyle: {
       justifyContent: 'center',
@@ -30,7 +30,7 @@ const defaultAlertTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): Aler
       fontSize: 16,
       flex: 1,
       paddingVertical: 15,
-      color: colors.primaryTextColor,
+      color: 'black',
       paddingLeft: 0,
       fontFamily: fonts.medium,
     },
@@ -43,7 +43,7 @@ const defaultAlertTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): Aler
     },
     messageTextStyle: {
       fontSize: 15,
-      color: colors.primaryTextColor,
+      color: 'black',
       fontFamily: fonts.regular,
     },
   });

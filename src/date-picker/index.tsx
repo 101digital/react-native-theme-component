@@ -63,15 +63,15 @@ const DatePicker = (props: DatePickerProps) => {
   const styles: DatePickerStyles = defaultsDeep(style, datePicker);
 
   const calTheme = defaultsDeep(calendarTheme, {
-    todayTextColor: colors.primaryTextColor,
+    todayTextColor: 'black',
     indicatorColor: colors.primaryColor,
     textDayFontFamily: fonts.regular,
     textMonthFontFamily: fonts.medium,
     textDayHeaderFontFamily: fonts.medium,
-    textSectionTitleColor: colors.primaryTextColor,
+    textSectionTitleColor: 'black',
     textMonthFontWeight: '600',
     textMonthFontSize: 16,
-    monthTextColor: colors.primaryTextColor,
+    monthTextColor: 'black',
     textDayFontWeight: '300',
     arrowColor: 'black',
     'stylesheet.calendar.main': {

@@ -1,4 +1,4 @@
-import { defaultsDeep } from 'lodash';
+import { defaultsDeep, isEmpty } from 'lodash';
 import React, { ReactNode, useContext } from 'react';
 import {
   Dimensions,
@@ -120,7 +120,7 @@ const AlertModal = (props: AlertModalProps) => {
           </TouchableOpacity>
         </View>
         <View style={[styles.bodyStyle, { paddingHorizontal: horizontalSpace }]}>
-          {message && <Text style={styles.messageTextStyle}>{message}</Text>}
+          {!isEmpty(message) && <Text style={styles.messageTextStyle}>{message}</Text>}
           {children}
         </View>
         <View style={[styles.footerStyle, { marginHorizontal: horizontalSpace }]}>
@@ -131,7 +131,7 @@ const AlertModal = (props: AlertModalProps) => {
                   flex: 1,
                 },
               }}
-              variant="secondary"
+              variant='secondary'
               label={cancelTitle}
               onPress={onCancel}
             />

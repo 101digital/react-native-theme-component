@@ -5,7 +5,7 @@ import { ThemeColorProps } from '../colors';
 
 const defaultInputPhoneNumberTheme = (
   fonts: ThemeFontProps,
-  colors: ThemeColorProps
+  _: ThemeColorProps
 ): InputPhoneNumberStyles => {
   return StyleSheet.create({
     contentContainerStyle: {
@@ -23,7 +23,7 @@ const defaultInputPhoneNumberTheme = (
       flex: 1,
       marginHorizontal: 10,
       fontSize: 16,
-      color: colors.primaryTextColor,
+      color: 'black',
       fontFamily: fonts.regular,
     },
     errorTextStyle: {
@@ -41,7 +41,7 @@ const defaultInputPhoneNumberTheme = (
     },
     dialTextStyle: {
       fontSize: 16,
-      color: colors.primaryTextColor,
+      color: 'black',
       marginRight: 5,
       fontFamily: fonts.regular,
     },

@@ -3,10 +3,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { InputFieldStyles } from '.';
 import { ThemeColorProps } from '../colors';
 
-const defaultInputFieldTheme = (
-  fonts: ThemeFontProps,
-  colors: ThemeColorProps
-): InputFieldStyles => {
+const defaultInputFieldTheme = (fonts: ThemeFontProps, _: ThemeColorProps): InputFieldStyles => {
   return StyleSheet.create({
     contentContainerStyle: {
       alignItems: 'center',
@@ -23,7 +20,7 @@ const defaultInputFieldTheme = (
       flex: 1,
       marginHorizontal: 10,
       fontSize: 16,
-      color: colors.primaryTextColor,
+      color: 'black',
       fontFamily: fonts.regular,
     },
     errorTextStyle: {
