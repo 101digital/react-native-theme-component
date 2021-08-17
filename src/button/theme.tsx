@@ -24,13 +24,11 @@ const defaultButtonTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): But
     primaryLabelStyle: {
       fontSize: 14,
       color: colors.primaryButtonLabelColor,
-      letterSpacing: 1.1,
       fontFamily: fonts.medium,
     },
     secondaryLabelStyle: {
       fontSize: 14,
       color: colors.secondaryButtonLabelColor,
-      letterSpacing: 1.1,
       fontFamily: fonts.medium,
     },
     loadingWrapperStyle: {
