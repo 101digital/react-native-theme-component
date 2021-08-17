@@ -127,8 +127,28 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
           _countries,
           (country) => !isEmpty(country.attributes.idd) && country.attributes.idd !== 'NONE'
         );
-        await localCountry.storeCountries(filteredCountried);
-        setCountries(filteredCountried);
+        let countries: CountryInformation[] = [];
+        filteredCountried.forEach((country: CountryInformation) => {
+          const separateIdds = country.attributes.idd.split(',');
+          if (separateIdds.length > 0) {
+            separateIdds.forEach((idd) =>
+              countries.push({
+                ...country,
+                attributes: {
+                  ...country.attributes,
+                  idd: idd.trim().replace('+', ''),
+                },
+              })
+            );
+          } else {
+            countries.push({
+              ...country,
+              attributes: { ...country.attributes, idd: country.attributes.idd.replace('+', '') },
+            });
+          }
+        });
+        await localCountry.storeCountries(countries);
+        setCountries(countries);
       } else {
         setCountries(_localCountries);
       }

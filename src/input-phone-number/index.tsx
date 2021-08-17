@@ -114,7 +114,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
           style={styles.dialContainerStyle}
           onPress={onPressDialCode}
         >
-          <Text style={styles.dialTextStyle}>{dialCode}</Text>
+          <Text style={styles.dialTextStyle}>{`+${dialCode}`}</Text>
           <ArrowDownIcon width={10} height={10} color={'black'} />
         </TouchableOpacity>
         <View style={styles.inputContainerStyle}>
@@ -127,7 +127,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
               options={options}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               type={type}
               {...restProps}
             />
@@ -139,7 +139,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               onChangeText={handleMobileNumberTextOnChange}
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               {...restProps}
             />
           )}
