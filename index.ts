@@ -15,3 +15,5 @@ export {
 export { getDeviceCountryCode } from './src/country-picker/country-code';
 export { default as CountryPicker } from './src/country-picker';
 export { default as DatePicker } from './src/date-picker';
+export { default as ImagePicker } from './src/image-picker';
+export { showMessage } from 'react-native-flash-message';
