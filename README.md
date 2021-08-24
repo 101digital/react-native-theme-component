@@ -270,18 +270,18 @@ npx react-native link
 
 To use `ImagePicker`, make sure you installed [react-native-permissions](https://github.com/zoontek/react-native-permissions) and [react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker)
 
-| Name                 | Type                           | Description                                                                                                              |
-| :------------------- | :----------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| isVisible            | bool (Optional)                | If `true` image picker will be shown . Default is `false`                                                                |
-| maxImageSize         | number (Optional)              | Max image size can be picked. Default is `2MB `                                                                          |
-| allowTypes           | String[] (Optional)            | List of document's extension can be picked                                                                               |
-| cropping             | bool (Optional)                | Crop image after picked. Default is `false `                                                                             |
-| cropping             | bool (Optional)                | Crop image after picked. Default is `false `                                                                             |
-| cropperCircleOverlay | bool (Optional)                | If allow crop image, then can crop into circle image or keep original. Default is `false`                                |
-| useFrontCamera       | bool (Optional)                | User front camera when taking a photo. Default is `false`                                                                |
-| onClose              | Function (Required)            | Callback to handle closing image picker                                                                                  |
-| onUpload             | Function (Required)            | Callback once completed pick an image, then return image data                                                            |
-| style                | CountryPickerStyles (Optional) | Can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/country-picker/index.tsx) |
+| Name                 | Type                           | Description                                                                                                            |
+| :------------------- | :----------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
+| isVisible            | bool (Optional)                | If `true` image picker will be shown . Default is `false`                                                              |
+| maxImageSize         | number (Optional)              | Max image size can be picked. Default is `2MB `                                                                        |
+| allowTypes           | String[] (Optional)            | List of document's extension can be picked                                                                             |
+| cropping             | bool (Optional)                | Crop image after picked. Default is `false `                                                                           |
+| cropping             | bool (Optional)                | Crop image after picked. Default is `false `                                                                           |
+| cropperCircleOverlay | bool (Optional)                | If allow crop image, then can crop into circle image or keep original. Default is `false`                              |
+| useFrontCamera       | bool (Optional)                | User front camera when taking a photo. Default is `false`                                                              |
+| onClose              | Function (Required)            | Callback to handle closing image picker                                                                                |
+| onUpload             | Function (Required)            | Callback once completed pick an image, then return image data                                                          |
+| style                | CountryPickerStyles (Optional) | Can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/image-picker/index.tsx) |
 
 ### Add component to the config.json file manually
 
