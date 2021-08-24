@@ -7,10 +7,8 @@ const defaultImagePickerTheme = (fonts: ThemeFontProps): ImagePickerStyles => {
     buttonContainerStyle: {
       width: '100%',
       flexDirection: 'row',
-    },
-    textContainerStyle: {
-      marginLeft: 15,
-      flex: 1,
+      paddingVertical: 10,
+      alignItems: 'center',
     },
     buttonTextStyle: {
       fontFamily: fonts.regular,
@@ -18,9 +16,16 @@ const defaultImagePickerTheme = (fonts: ThemeFontProps): ImagePickerStyles => {
       textAlign: 'left',
       color: 'black',
       lineHeight: 17,
+      marginLeft: 15,
+    },
+    cancelButtonContainerStyle: {
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 10,
     },
     cancelTextStyle: {
-      fontFamily: fonts.regular,
+      fontFamily: fonts.medium,
       fontSize: 14,
       textAlign: 'center',
       color: 'red',

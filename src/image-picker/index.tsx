@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Alert, StyleProp, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Alert, StyleProp, Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import Picker from 'react-native-image-crop-picker';
 // @ts-ignore
 import * as mime from 'react-native-mime-types';
@@ -8,12 +8,13 @@ import BottomSheetModal from '../bottom-sheet';
 import { ThemeContext } from '../theme-context';
 import { GalleryIcon, CameraIcon } from '../assets';
 import { defaultsDeep } from 'lodash';
+import { showMessage } from 'react-native-flash-message';
 
 export type ImagePickerStyles = {
   buttonContainerStyle?: StyleProp<ViewStyle>;
   buttonTextStyle?: StyleProp<TextStyle>;
   cancelTextStyle?: StyleProp<TextStyle>;
-  textContainerStyle?: StyleProp<ViewStyle>;
+  cancelButtonContainerStyle?: StyleProp<ViewStyle>;
 };
 
 export type ImagePickerProps = {
@@ -54,6 +55,7 @@ const ImagePicker = (props: ImagePickerProps) => {
       cropping: cropping,
       cropperCircleOverlay: cropperCircleOverlay,
       useFrontCamera: useFrontCamera,
+      loadingLabelText: i18n?.t('image_picker.msg_loading_picker') ?? 'Please waiting...',
     })
       .then((image) => {
         if (image.size < maxImageSize!) {
@@ -64,26 +66,33 @@ const ImagePicker = (props: ImagePickerProps) => {
           if (validatedImageType) {
             onUpload(image);
           } else {
-            // showMessage({
-            //   message: i18n?.t('attach_document.msg_allow_file_type'),
-            //   backgroundColor: '#ff0000',
-            // });
+            showMessage({
+              message:
+                i18n?.t('image_picker.msg_allow_file_type') ??
+                `Allowed file types are ${allowTypes?.map((al) => al.toUpperCase()).join(', ')}.`,
+              backgroundColor: '#ff0000',
+            });
           }
         } else {
-          //   showMessage({
-          //     message: i18n?.t('attach_document.msg_max_file_size'),
-          //     backgroundColor: '#ff0000',
-          //   });
+          showMessage({
+            message: i18n?.t('image_picker.msg_max_file_size') ?? 'Maximum file size should be 2MB',
+            backgroundColor: '#ff0000',
+          });
         }
       })
       .catch((e) => {
         if (e.toString() !== 'Error: User cancelled image selection') {
           Alert.alert(
-            i18n?.t('attach_document.msg_allow_access_camera'),
-            i18n.t('attach_document.msg_turn_camera_setting'),
+            i18n?.t('image_picker.msg_allow_access_camera') ??
+              'Allow Application To Access Your Camera',
+            i18n?.t('image_picker.msg_turn_camera_setting') ??
+              'Tap Open Settings and turn on Camera to allow access.',
             [
-              { text: i18n?.t('common.btn_cancel') },
-              { text: i18n?.t('attach_document.btn_open_setting'), onPress: () => openSettings() },
+              { text: i18n?.t('image_picker.btn_cancel') ?? 'Cancel' },
+              {
+                text: i18n?.t('image_picker.btn_open_setting') ?? 'Open Settings',
+                onPress: () => openSettings(),
+              },
             ]
           );
         }
@@ -99,6 +108,7 @@ const ImagePicker = (props: ImagePickerProps) => {
       compressImageQuality: 0.8,
       cropping: cropping,
       cropperCircleOverlay: cropperCircleOverlay,
+      loadingLabelText: i18n?.t('image_picker.msg_loading_picker') ?? 'Please waiting...',
     })
       .then((image) => {
         if (image.size < maxImageSize!) {
@@ -110,26 +120,33 @@ const ImagePicker = (props: ImagePickerProps) => {
           if (validatedImageType) {
             onUpload(image);
           } else {
-            // showMessage({
-            //   message: i18n?.t('attach_document.msg_allow_file_type'),
-            //   backgroundColor: '#ff0000',
-            // });
+            showMessage({
+              message:
+                i18n?.t('image_picker.msg_allow_file_type') ??
+                `Allowed file types are ${allowTypes?.map((al) => al.toUpperCase()).join(', ')}.`,
+              backgroundColor: '#ff0000',
+            });
           }
         } else {
-          //   showMessage({
-          //     message: i18n?.t('attach_document.msg_max_file_size'),
-          //     backgroundColor: '#ff0000',
-          //   });
+          showMessage({
+            message: i18n?.t('image_picker.msg_max_file_size') ?? 'Maximum file size should be 2MB',
+            backgroundColor: '#ff0000',
+          });
         }
       })
       .catch((e) => {
         if (e.toString() !== 'Error: User cancelled image selection') {
           Alert.alert(
-            i18n?.t('attach_document.msg_allow_access_photo'),
-            i18n?.t('attach_document.msg_turn_photo_setting'),
+            i18n?.t('image_picker.msg_allow_access_photo') ??
+              'Allow Application To Access Your Photos',
+            i18n?.t('image_picker.msg_turn_photo_setting') ??
+              'Tap Open Settings and turn on Photos to allow access',
             [
-              { text: i18n?.t('common.btn_cancel') },
-              { text: i18n?.t('attach_document.btn_open_setting'), onPress: () => openSettings() },
+              { text: i18n?.t('image_picker.btn_cancel') ?? 'Cancel' },
+              {
+                text: i18n?.t('image_picker.btn_open_setting') ?? 'Open Settings',
+                onPress: () => openSettings(),
+              },
             ]
           );
         }
@@ -163,10 +180,10 @@ const ImagePicker = (props: ImagePickerProps) => {
         style={styles.buttonContainerStyle}
         activeOpacity={0.8}
       >
-        <CameraIcon width={15} height={15} />
-        <View style={styles.textContainerStyle}>
-          <Text style={styles.buttonTextStyle}>{'Take photo'}</Text>
-        </View>
+        <CameraIcon width={18} height={18} />
+        <Text style={styles.buttonTextStyle}>
+          {i18n?.t('image_picker.btn_take_photo') ?? 'Take photo'}
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -178,15 +195,19 @@ const ImagePicker = (props: ImagePickerProps) => {
         style={styles.buttonContainerStyle}
         activeOpacity={0.8}
       >
-        <GalleryIcon width={15} height={15} />
-        <View style={styles.textContainerStyle}>
-          <Text style={styles.buttonTextStyle}>{'Choose photo'}</Text>
-        </View>
+        <GalleryIcon width={18} height={18} />
+        <Text style={styles.buttonTextStyle}>
+          {i18n?.t('image_picker.btn_choose_photo') ?? 'Choose photo'}
+        </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={onClose} style={styles.buttonContainerStyle} activeOpacity={0.8}>
-        <View style={styles.textContainerStyle}>
-          <Text style={styles.cancelTextStyle}>{i18n.t('common.btn_cancel').toUpperCase()}</Text>
-        </View>
+      <TouchableOpacity
+        onPress={onClose}
+        style={styles.cancelButtonContainerStyle}
+        activeOpacity={0.8}
+      >
+        <Text style={styles.cancelTextStyle}>
+          {i18n?.t('image_picker.btn_cancel').toUpperCase() ?? 'CANCEL'}
+        </Text>
       </TouchableOpacity>
     </BottomSheetModal>
   );

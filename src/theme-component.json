@@ -24,6 +24,19 @@
       "btn_close": "Close",
       "btn_done": "Done",
       "lbl_select_date": "Select Date"
+    },
+    "image_picker": {
+      "msg_loading_picker": "Please waiting...",
+      "msg_allow_file_type": "Allowed file types are PNG and JPG/JPEG",
+      "msg_max_file_size": "Maximum file size should be 2MB",
+      "msg_allow_access_camera": "Allow Application To Access Your Camera",
+      "msg_turn_camera_setting": "Tap Open Settings and turn on Camera to allow access.",
+      "btn_cancel": "Cancel",
+      "btn_open_setting": "Open Settings",
+      "msg_allow_access_photo": "Allow Application To Access Your Photos",
+      "msg_turn_photo_setting": "Tap Open Settings and turn on Photos to allow access",
+      "btn_take_photo": "Take photo",
+      "btn_choose_photo": "Choose photo"
     }
   }
 }
