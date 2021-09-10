@@ -1,6 +1,6 @@
 {
   "name": "react-native-theme-component",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "A set of elements for base project",
   "repository": "https://github.com/101digital/react-native-theme-component.git",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "react-native-calendars": "^1.1264.0",
     "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-flash-message": "^0.1.23",
-    "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-keyboard-aware-scroll-view": "APSL/react-native-keyboard-aware-scroll-view#pull/501/head",
     "react-native-masked-text": "^1.13.0",
     "react-native-mime-types": "^2.3.0",
     "react-native-modal": "^12.0.2"
