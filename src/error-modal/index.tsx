@@ -21,13 +21,15 @@ export type ErrorModalProps = {
   timeOut?: boolean;
   timeLimit?: number;
   leftIcon?: ReactNode;
+  isFullWidth?: boolean;
+  isShowClose?: boolean;
   onClose: () => void;
   style?: ErrorModalStyles;
 };
 
 const ErrorModal = (props: ErrorModalProps) => {
   const { errorModal, i18n } = useContext(ThemeContext);
-  const { error, timeLimit, timeOut, onClose, leftIcon, style } = props;
+  const { error, timeLimit, timeOut, onClose, leftIcon, style, isFullWidth, isShowClose } = props;
   const [isShowError, setShowError] = useState<boolean>(false);
 
   const styles = defaultsDeep(style, errorModal);
@@ -58,6 +60,8 @@ const ErrorModal = (props: ErrorModalProps) => {
       message={error?.message!}
       animationIn='fadeIn'
       animationOut='fadeOut'
+      isFullWidth={isFullWidth}
+      isShowClose={isShowClose}
       leftIcon={leftIcon ?? <RiskIcon size={20} />}
       onConfirmed={onClose}
     >

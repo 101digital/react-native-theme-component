@@ -44,6 +44,8 @@ export type AlertModalProps = {
   closeIcon?: ReactNode;
   confirmTitle?: string;
   cancelTitle?: string;
+  isFullWidth?: boolean;
+  isShowClose?: boolean;
   backdropOpacity?: number;
   style?: AlertModalStyles;
   animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn';
@@ -72,6 +74,8 @@ const AlertModal = (props: AlertModalProps) => {
     backdropOpacity,
     horizontalSpace,
     style,
+    isShowClose,
+    isFullWidth,
     ...restProps
   } = props;
   const { alert, colors, i18n } = useContext(ThemeContext);
@@ -111,13 +115,15 @@ const AlertModal = (props: AlertModalProps) => {
             </View>
           )}
           <Text style={styles.titleTextStyle}>{title}</Text>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={[styles.closeButtonStyle, { paddingHorizontal: horizontalSpace }]}
-            onPress={onClose}
-          >
-            <CloseIcon width={15} height={15} />
-          </TouchableOpacity>
+          {isShowClose && (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={[styles.closeButtonStyle, { paddingHorizontal: horizontalSpace }]}
+              onPress={onClose}
+            >
+              <CloseIcon width={15} height={15} />
+            </TouchableOpacity>
+          )}
         </View>
         <View style={[styles.bodyStyle, { paddingHorizontal: horizontalSpace }]}>
           {!isEmpty(message) && <Text style={styles.messageTextStyle}>{message}</Text>}
@@ -136,9 +142,10 @@ const AlertModal = (props: AlertModalProps) => {
               onPress={onCancel}
             />
           ) : (
-            <View style={innerStyles.button} />
+            <View style={!isFullWidth ? innerStyles.button : {}} />
           )}
-          <View style={innerStyles.spacer} />
+          {!isFullWidth && <View style={innerStyles.spacer} />}
+
           <Button
             style={{
               primaryContainerStyle: {
@@ -160,6 +167,8 @@ AlertModal.defaultProps = {
   backdropOpacity: 0.5,
   animationIn: 'fadeIn',
   animationOut: 'fadeOut',
+  isShowClose: true,
+  isFullWidth: false,
 };
 
 export default React.memo(AlertModal);
