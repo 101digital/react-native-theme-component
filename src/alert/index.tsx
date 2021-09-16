@@ -87,7 +87,7 @@ const AlertModal = (props: AlertModalProps) => {
   const [_isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (_isVisible) {
+    if (isVisible) {
       if (timeOut) {
         setTimeout(() => {
           setIsVisible(true);
