@@ -39,13 +39,7 @@ const ErrorModal = (props: ErrorModalProps) => {
       if (error.errorCode === 401) {
         onClose();
       } else {
-        if (timeOut) {
-          setTimeout(() => {
-            setShowError(true);
-          }, timeLimit ?? 100);
-        } else {
-          setShowError(true);
-        }
+        setShowError(true);
       }
     } else {
       setShowError(false);
@@ -54,6 +48,8 @@ const ErrorModal = (props: ErrorModalProps) => {
 
   return (
     <AlertModal
+      timeLimit={timeLimit}
+      timeOut={timeOut}
       isVisible={isShowError}
       onClose={onClose}
       title={error?.title!}

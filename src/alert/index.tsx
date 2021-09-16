@@ -1,5 +1,5 @@
 import { defaultsDeep, isEmpty } from 'lodash';
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import {
   Dimensions,
   Platform,
@@ -47,6 +47,8 @@ export type AlertModalProps = {
   isFullWidth?: boolean;
   isShowClose?: boolean;
   backdropOpacity?: number;
+  timeOut?: boolean;
+  timeLimit?: number;
   style?: AlertModalStyles;
   animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn';
   animationOut?: 'fadeOut' | 'slideOutDown' | 'zoomOut';
@@ -76,9 +78,27 @@ const AlertModal = (props: AlertModalProps) => {
     style,
     isShowClose,
     isFullWidth,
+    isVisible,
+    timeLimit,
+    timeOut,
     ...restProps
   } = props;
   const { alert, colors, i18n } = useContext(ThemeContext);
+  const [_isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (_isVisible) {
+      if (timeOut) {
+        setTimeout(() => {
+          setIsVisible(true);
+        }, timeLimit ?? 100);
+      } else {
+        setIsVisible(true);
+      }
+    } else {
+      setIsVisible(false);
+    }
+  }, [isVisible]);
 
   const styles = defaultsDeep(style, alert);
 
@@ -96,6 +116,7 @@ const AlertModal = (props: AlertModalProps) => {
 
   return (
     <Modal
+      isVisible={_isVisible}
       deviceHeight={deviceHeight}
       backdropTransitionInTiming={50}
       backdropTransitionOutTiming={50}
