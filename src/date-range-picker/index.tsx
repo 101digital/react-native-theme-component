@@ -17,7 +17,7 @@ import { ThemeContext } from '../theme-context';
 import { defaultsDeep } from 'lodash';
 import Modal from 'react-native-modal';
 import XDate from 'xdate';
-import { Button } from 'index';
+import Button from '../button/index';
 
 const deviceHeight =
   Platform.OS === 'ios'
