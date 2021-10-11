@@ -23,7 +23,10 @@
     "date_picker": {
       "btn_close": "Close",
       "btn_done": "Done",
-      "lbl_select_date": "Select Date"
+      "lbl_select_date": "Select Date",
+      "lbl_select_date_range": "Select A Date Range",
+      "btn_apply_date_range": "Apply",
+      "btn_cancel_date_range": "Cancel"
     },
     "image_picker": {
       "msg_loading_picker": "Please waiting...",
@@ -36,10 +39,7 @@
       "msg_allow_access_photo": "Allow Application To Access Your Photos",
       "msg_turn_photo_setting": "Tap Open Settings and turn on Photos to allow access",
       "btn_take_photo": "Take photo",
-      "btn_choose_photo": "Choose photo",
-      "lbl_select_date_range": "Select A Date Range",
-      "btn_apply_date_range": "Apply",
-      "btn_cancel_date_range": "Cancel"
+      "btn_choose_photo": "Choose photo"
     }
   }
 }

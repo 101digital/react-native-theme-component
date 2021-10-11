@@ -34,6 +34,9 @@ const defaultDateRangePickerTheme = (
       marginTop: 32,
       marginBottom: 10,
     },
+    titleContainerStyle: {
+      flex: 1,
+    },
   });
 };
 

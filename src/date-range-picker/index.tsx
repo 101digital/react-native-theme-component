@@ -27,6 +27,7 @@ const deviceHeight =
 export type DateRangePickerStyles = {
   headerContainer?: StyleProp<ViewStyle>;
   calendarContainer?: StyleProp<ViewStyle>;
+  titleContainerStyle?: StyleProp<ViewStyle>;
   headerTitleStyle?: StyleProp<TextStyle>;
   bottomContainer?: StyleProp<ViewStyle>;
 };
@@ -42,6 +43,7 @@ export type DateRangePickerProps = {
     rangeColor?: string;
     dotColor?: string;
     selectedColor?: string;
+    todaySelectedColor?: string;
     textColor?: string;
     selectedTextColor?: string;
   };
@@ -67,6 +69,8 @@ const DateRangePicker = (props: DateRangePickerProps) => {
     isVisible,
     backdropOpacity,
     color,
+    cancelTitle,
+    applyTitle,
   } = props;
   const [markedDate, setMarkedDate] = useState({});
   const [startDate, setStartDate] = useState(initStart);
@@ -129,7 +133,7 @@ const DateRangePicker = (props: DateRangePickerProps) => {
   }, [isVisible]);
 
   const getTodayColor = (isSelected: boolean) => {
-    return isSelected ? color?.selectedTextColor ?? 'white' : 'grey';
+    return isSelected ? color?.todaySelectedColor ?? colors.primaryColor : 'grey';
   };
 
   const onDayPress = (day: DateObject) => {
@@ -154,7 +158,7 @@ const DateRangePicker = (props: DateRangePickerProps) => {
         startingDay: true,
         endingDay: true,
         color: colors.primaryColor,
-        textColor: 'white',
+        textColor: color?.selectedTextColor ?? 'white',
         marked: today === day.dateString,
         dotColor: color?.dotColor ?? 'white',
       },
@@ -174,7 +178,7 @@ const DateRangePicker = (props: DateRangePickerProps) => {
         markedDates = {
           [toDate]: {
             color: colors.primaryColor,
-            textColor: 'white',
+            textColor: color?.selectedTextColor ?? 'white',
             startingDay: true,
             endingDay: false,
           },
@@ -196,7 +200,7 @@ const DateRangePicker = (props: DateRangePickerProps) => {
             markedDates[tempDate] = {
               endingDay: true,
               color: colors.primaryColor,
-              textColor: 'white',
+              textColor: color?.selectedTextColor ?? 'white',
               marked: tempDate === today,
               dotColor: color?.dotColor ?? 'white',
             };
@@ -215,7 +219,7 @@ const DateRangePicker = (props: DateRangePickerProps) => {
       [initStart]: {
         startingDay: true,
         color: colors.primaryColor,
-        textColor: 'white',
+        textColor: color?.selectedTextColor ?? 'white',
         endingDay: true,
       },
     };
@@ -250,9 +254,11 @@ const DateRangePicker = (props: DateRangePickerProps) => {
     >
       <SafeAreaView style={innerStyles.container}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerTitleStyle}>
-            {title ?? i18n?.t('date_picker.lbl_select_date_range') ?? 'Select A Date Range'}
-          </Text>
+          <View style={styles.titleContainerStyle}>
+            <Text style={styles.headerTitleStyle}>
+              {title ?? i18n?.t('date_picker.lbl_select_date_range') ?? 'Select A Date Range'}
+            </Text>
+          </View>
         </View>
         <View style={styles.calendarContainer}>
           <Calendar
@@ -263,8 +269,27 @@ const DateRangePicker = (props: DateRangePickerProps) => {
             onDayPress={(day) => onDayPress(day)}
           />
           <View style={styles.bottomContainer}>
-            <Button label='Cancel' variant='secondary' onPress={onClose} />
-            <Button label='Apply' onPress={handleApply} />
+            <Button
+              style={{
+                secondaryContainerStyle: {
+                  flex: 1,
+                  marginRight: 7,
+                },
+              }}
+              label={cancelTitle ?? i18n?.t('date_picker.btn_cancel_date_range') ?? 'Cancel'}
+              variant='secondary'
+              onPress={onClose}
+            />
+            <Button
+              style={{
+                primaryContainerStyle: {
+                  flex: 1,
+                  marginLeft: 7,
+                },
+              }}
+              label={applyTitle ?? i18n?.t('date_picker.btn_apply_date_range') ?? 'Apply'}
+              onPress={handleApply}
+            />
           </View>
         </View>
       </SafeAreaView>
