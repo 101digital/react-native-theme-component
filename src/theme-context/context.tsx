@@ -24,8 +24,8 @@ import { DatePickerStyles } from '../date-picker';
 import defaultDatePickerTheme from '../date-picker/theme';
 import { ImagePickerStyles } from '../image-picker';
 import defaultImagePickerTheme from '../image-picker/theme';
-import { DateRangePickerStyles } from '@/date-range-picker';
-import defaultDateRangePickerTheme from '@/date-range-picker/theme';
+import { DateRangePickerStyles } from '../date-range-picker';
+import defaultDateRangePickerTheme from '../date-range-picker/theme';
 
 export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): ThemeProps => {
   return {
