@@ -24,6 +24,8 @@ import { DatePickerStyles } from '../date-picker';
 import defaultDatePickerTheme from '../date-picker/theme';
 import { ImagePickerStyles } from '../image-picker';
 import defaultImagePickerTheme from '../image-picker/theme';
+import { DateRangePickerStyles } from '@/date-range-picker';
+import defaultDateRangePickerTheme from '@/date-range-picker/theme';
 
 export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): ThemeProps => {
   return {
@@ -38,6 +40,7 @@ export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): Th
     countryPicker: defaultCountryPickerTheme(fonts),
     datePicker: defaultDatePickerTheme(fonts, colors),
     imagePicker: defaultImagePickerTheme(fonts),
+    dateRangePicker: defaultDateRangePickerTheme(fonts, colors),
   };
 };
 
@@ -53,6 +56,7 @@ export type ThemeProps = {
   countryPicker: CountryPickerStyles;
   datePicker: DatePickerStyles;
   imagePicker: ImagePickerStyles;
+  dateRangePicker: DateRangePickerStyles;
 };
 
 export interface ThemeContextData {
@@ -67,6 +71,7 @@ export interface ThemeContextData {
   countryPicker: CountryPickerStyles;
   datePicker: DatePickerStyles;
   imagePicker: ImagePickerStyles;
+  dateRangePicker: DateRangePickerStyles;
   i18n?: any;
   countries: CountryInformation[];
   deviceCountryCode: string;
@@ -85,6 +90,7 @@ export const themeDefaultValue: ThemeContextData = {
   countryPicker: {},
   datePicker: {},
   imagePicker: {},
+  dateRangePicker: {},
   countries: [],
   deviceCountryCode: '65',
   isLoadingCountry: false,
@@ -108,6 +114,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
   const [isLoadingCountry, setLoadingCountry] = useState(false);
   const [datePicker] = useState<DatePickerStyles>(initial.datePicker ?? {});
   const [imagePicker] = useState<ImagePickerStyles>(initial.imagePicker ?? {});
+  const [dateRangePicker] = useState<DateRangePickerStyles>(initial.dateRangePicker ?? {});
 
   useEffect(() => {
     getCurrentCountries();
@@ -186,6 +193,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       isLoadingCountry,
       datePicker,
       imagePicker,
+      dateRangePicker,
     }),
     [
       colors,
@@ -203,6 +211,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       isLoadingCountry,
       datePicker,
       imagePicker,
+      dateRangePicker,
     ]
   );
 };
