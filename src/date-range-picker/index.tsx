@@ -247,8 +247,8 @@ const DateRangePicker = (props: DateRangePickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn='slideInUp'
-      animationOut='slideOutDown'
+      animationIn="slideInUp"
+      animationOut="slideOutDown"
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
     >
@@ -277,7 +277,7 @@ const DateRangePicker = (props: DateRangePickerProps) => {
                 },
               }}
               label={cancelTitle ?? i18n?.t('date_picker.btn_cancel_date_range') ?? 'Cancel'}
-              variant='secondary'
+              variant="secondary"
               onPress={onClose}
             />
             <Button

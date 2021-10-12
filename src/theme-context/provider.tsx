@@ -30,7 +30,7 @@ export const ThemeProvider = (props: BankingProviderProps) => {
   return (
     <ThemeContext.Provider value={themeContextData}>
       {children}
-      <FlashMessage position='top' />
+      <FlashMessage position="top" />
     </ThemeContext.Provider>
   );
 };

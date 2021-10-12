@@ -134,12 +134,12 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
           _countries,
           (country) => !isEmpty(country.attributes.idd) && country.attributes.idd !== 'NONE'
         );
-        let countries: CountryInformation[] = [];
+        let lastestCountries: CountryInformation[] = [];
         filteredCountried.forEach((country: CountryInformation) => {
           const separateIdds = country.attributes.idd.split(',');
           if (separateIdds.length > 0) {
             separateIdds.forEach((idd) =>
-              countries.push({
+              lastestCountries.push({
                 ...country,
                 attributes: {
                   ...country.attributes,
@@ -148,14 +148,14 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
               })
             );
           } else {
-            countries.push({
+            lastestCountries.push({
               ...country,
               attributes: { ...country.attributes, idd: country.attributes.idd.replace('+', '') },
             });
           }
         });
-        await localCountry.storeCountries(countries);
-        setCountries(countries);
+        await localCountry.storeCountries(lastestCountries);
+        setCountries(lastestCountries);
       } else {
         setCountries(_localCountries);
       }

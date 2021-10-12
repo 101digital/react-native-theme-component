@@ -54,8 +54,8 @@ const ErrorModal = (props: ErrorModalProps) => {
       onClose={onClose}
       title={error?.title!}
       message={error?.message!}
-      animationIn='fadeIn'
-      animationOut='fadeOut'
+      animationIn="fadeIn"
+      animationOut="fadeOut"
       isFullWidth={isFullWidth}
       isShowClose={isShowClose}
       leftIcon={leftIcon ?? <RiskIcon size={20} />}
