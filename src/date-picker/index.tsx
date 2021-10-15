@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   Dimensions,
   Platform,
@@ -60,6 +60,10 @@ const DatePicker = (props: DatePickerProps) => {
   } = props;
   const [selectedDate, setDate] = useState(moment(pickedDate).format('YYYY-MM-DD'));
   const [selectedStartDate] = useState(moment(minDate).format('YYYY-MM-DD'));
+
+  useEffect(() => {
+    setDate(moment(pickedDate).format('YYYY-MM-DD'));
+  }, [pickedDate]);
 
   const styles: DatePickerStyles = defaultsDeep(style, datePicker);
 
@@ -128,8 +132,8 @@ const DatePicker = (props: DatePickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn="slideInUp"
-      animationOut="slideOutDown"
+      animationIn='slideInUp'
+      animationOut='slideOutDown'
       onBackdropPress={() => onClose(undefined)}
       onBackButtonPress={() => onClose(undefined)}
     >
