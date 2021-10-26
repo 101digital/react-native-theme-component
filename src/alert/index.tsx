@@ -14,7 +14,7 @@ import {
 import Modal from 'react-native-modal';
 import { CloseIcon } from '../assets/close.icon';
 import { InformationIcon } from '../assets/information.icon';
-import Button from '../button';
+import Button, { ButtonStyles } from '../button';
 import { ThemeContext } from '../theme-context';
 
 const deviceHeight =
@@ -32,6 +32,8 @@ export type AlertModalStyles = {
   footerStyle?: StyleProp<ViewStyle>;
   leftIconStyle?: StyleProp<ViewStyle>;
   closeButtonStyle?: StyleProp<ViewStyle>;
+  cancelButtonStyle?: ButtonStyles;
+  confirmButtonStyle?: ButtonStyles;
 };
 
 export type AlertModalProps = {
@@ -153,12 +155,14 @@ const AlertModal = (props: AlertModalProps) => {
         <View style={[styles.footerStyle, { marginHorizontal: horizontalSpace }]}>
           {cancelTitle ? (
             <Button
-              style={{
-                secondaryContainerStyle: {
-                  flex: 1,
-                },
-              }}
-              variant="secondary"
+              style={
+                style?.cancelButtonStyle ?? {
+                  secondaryContainerStyle: {
+                    flex: 1,
+                  },
+                }
+              }
+              variant='secondary'
               label={cancelTitle}
               onPress={onCancel}
             />
@@ -168,11 +172,13 @@ const AlertModal = (props: AlertModalProps) => {
           {!isFullWidth && <View style={innerStyles.spacer} />}
 
           <Button
-            style={{
-              primaryContainerStyle: {
-                flex: 1,
-              },
-            }}
+            style={
+              style?.confirmButtonStyle ?? {
+                primaryContainerStyle: {
+                  flex: 1,
+                },
+              }
+            }
             label={confirmTitle ?? i18n?.t('common.btn_confirm') ?? 'OK'}
             onPress={onConfirmed}
           />
