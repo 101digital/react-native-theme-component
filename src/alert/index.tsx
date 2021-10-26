@@ -83,6 +83,7 @@ const AlertModal = (props: AlertModalProps) => {
     isVisible,
     timeLimit,
     timeOut,
+    closeIcon,
     ...restProps
   } = props;
   const { alert, colors, i18n } = useContext(ThemeContext);
@@ -144,7 +145,7 @@ const AlertModal = (props: AlertModalProps) => {
               style={[styles.closeButtonStyle, { paddingHorizontal: horizontalSpace }]}
               onPress={onClose}
             >
-              <CloseIcon width={15} height={15} />
+              {closeIcon ?? <CloseIcon width={15} height={15} />}
             </TouchableOpacity>
           )}
         </View>
