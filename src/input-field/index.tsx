@@ -52,7 +52,7 @@ const InputField = (props: InputFieldProps) => {
     options,
     ...restProps
   } = props;
-  const { inputField } = useContext(ThemeContext);
+  const { inputField, colors } = useContext(ThemeContext);
   const [active, setActive] = useState(false);
   const [field, meta, helpers] = useField(name);
   const styles: InputFieldStyles = defaultsDeep(style, inputField);
@@ -79,7 +79,7 @@ const InputField = (props: InputFieldProps) => {
   if (meta.error && meta.touched) {
     separatorColor = errorBorderColor!;
   } else {
-    separatorColor = active ? activeBorderColor! : inactiveBorderColor!;
+    separatorColor = active ? (activeBorderColor ?? colors.primaryColor)! : inactiveBorderColor!;
   }
 
   const getErrorMessage = (error: string) => {
@@ -125,7 +125,6 @@ const InputField = (props: InputFieldProps) => {
 
 InputField.defaultProps = {
   errorBorderColor: '#E63946',
-  activeBorderColor: '#0073F0',
   inactiveBorderColor: '#E6E6E6',
   type: 'custom',
 };

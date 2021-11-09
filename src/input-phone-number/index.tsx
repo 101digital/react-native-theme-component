@@ -61,7 +61,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
     type,
     ...restProps
   } = props;
-  const { inputPhoneNumber } = useContext(ThemeContext);
+  const { inputPhoneNumber, colors } = useContext(ThemeContext);
   const [active, setActive] = useState(false);
   const [field, meta, helpers] = useField(name);
   const styles: InputPhoneNumberStyles = defaultsDeep(style, inputPhoneNumber);
@@ -98,7 +98,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
   if (meta.error && meta.touched) {
     separatorColor = errorBorderColor!;
   } else {
-    separatorColor = active ? activeBorderColor! : inactiveBorderColor!;
+    separatorColor = active ? (activeBorderColor ?? colors.primaryColor)! : inactiveBorderColor!;
   }
 
   const getErrorMessage = (error: string) => {
@@ -127,7 +127,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
               options={options}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               type={type}
               {...restProps}
             />
@@ -139,7 +139,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               onChangeText={handleMobileNumberTextOnChange}
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               {...restProps}
             />
           )}
@@ -155,7 +155,6 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
 
 InputPhoneNumber.defaultProps = {
   errorBorderColor: '#E63946',
-  activeBorderColor: '#0073F0',
   inactiveBorderColor: '#E6E6E6',
   type: 'custom',
 };
