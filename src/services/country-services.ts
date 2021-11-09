@@ -12,6 +12,18 @@ class CountryServices {
     const json = await response.json();
     return json.data;
   };
+
+  getCurrencies = async () => {
+    const response = await fetch(`${_baseCountryUrl}/currencies`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const json = await response.json();
+    return json.data;
+  };
 }
 
 const instance = new CountryServices();

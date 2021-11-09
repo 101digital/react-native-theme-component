@@ -1,6 +1,6 @@
 {
   "name": "react-native-theme-component",
-  "version": "1.0.59",
+  "version": "1.0.60",
   "description": "A set of elements for base project",
   "repository": "https://github.com/101digital/react-native-theme-component.git",
   "license": "MIT",
@@ -16,6 +16,7 @@
   "author": "tuyennguyen-101D",
   "dependencies": {
     "@types/xdate": "^0.8.32",
+    "currency.js": "^2.0.4",
     "formik": "^2.1.5",
     "lodash": "^4.17.21",
     "react-native-calendars": "^1.1264.0",

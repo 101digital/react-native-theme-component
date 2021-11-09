@@ -76,6 +76,7 @@ export interface ThemeContextData {
   countries: CountryInformation[];
   deviceCountryCode: string;
   isLoadingCountry: boolean;
+  currencies: any[];
 }
 
 export const themeDefaultValue: ThemeContextData = {
@@ -94,6 +95,7 @@ export const themeDefaultValue: ThemeContextData = {
   countries: [],
   deviceCountryCode: '65',
   isLoadingCountry: false,
+  currencies: [],
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeDefaultValue);
@@ -115,14 +117,31 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
   const [datePicker] = useState<DatePickerStyles>(initial.datePicker ?? {});
   const [imagePicker] = useState<ImagePickerStyles>(initial.imagePicker ?? {});
   const [dateRangePicker] = useState<DateRangePickerStyles>(initial.dateRangePicker ?? {});
+  const [currencies, setCurrencies] = useState<any[]>([]);
 
   useEffect(() => {
     getCurrentCountries();
+    getCurrencies();
   }, []);
 
   useEffect(() => {
     getCountryCode();
   }, [countries]);
+
+  const getCurrencies = async () => {
+    try {
+      const _localCurrencies = await localCountry.getCurrencies();
+      if (_localCurrencies.length === 0) {
+        const _currencies = await countryServices.getCurrencies();
+        await localCountry.storeCurrencies(_currencies);
+        setCurrencies(_currencies);
+      } else {
+        setCurrencies(_localCurrencies);
+      }
+    } catch (error) {
+      setCurrencies([]);
+    }
+  };
 
   const getCurrentCountries = async () => {
     try {
@@ -194,6 +213,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       datePicker,
       imagePicker,
       dateRangePicker,
+      currencies,
     }),
     [
       colors,
@@ -212,6 +232,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       datePicker,
       imagePicker,
       dateRangePicker,
+      currencies,
     ]
   );
 };

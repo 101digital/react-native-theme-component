@@ -18,3 +18,4 @@ export { default as DatePicker } from './src/date-picker';
 export { default as ImagePicker } from './src/image-picker';
 export { default as DateRangePicker } from './src/date-range-picker';
 export { showMessage } from 'react-native-flash-message';
+export * from './src/utils/currency-format';
