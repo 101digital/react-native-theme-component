@@ -15,7 +15,6 @@
   - [Access Theme Data](#access-theme-data)
   - [Colors](#colors)
   - [Fonts](#fonts)
-    - [Note: If you use default font family (Poppins), you need some steps to link default font to your app.](#note--if-you-use-default-font-family--poppins---you-need-some-steps-to-link-default-font-to-your-app)
   - [Button](#button)
   - [Alert](#alert)
   - [BottomSheet](#bottomsheet)
@@ -148,7 +147,7 @@ The colors are being used for elements inside the theme-component or in your app
 
 The fonts are being used for element inside the theme-component or in your app as well. ThemeFontProps can be found [here](https://github.com/101digital/react-native-theme-component/blob/master/src/fonts.ts)
 
-#### Note: If you use default font family (Poppins), you need some steps to link default font to your app.
+- Note: If you use default font family (Poppins), you need some steps to link default font to your app.
 
 1. Create `react-native.config.js` in root folder
 2. Add assets folder path <b>'./node_modules/react-native-theme-component/src/assets/fonts'</b> to config
