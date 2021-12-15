@@ -17,5 +17,6 @@ export { default as CountryPicker } from './src/country-picker';
 export { default as DatePicker } from './src/date-picker';
 export { default as ImagePicker } from './src/image-picker';
 export { default as DateRangePicker } from './src/date-range-picker';
+export { default as CheckBox } from './src/checkbox';
 export { showMessage } from 'react-native-flash-message';
 export * from './src/utils/currency-format';
