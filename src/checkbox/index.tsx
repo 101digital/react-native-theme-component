@@ -2,7 +2,7 @@ import React, { ReactNode, useContext } from 'react';
 import { StyleProp, TextStyle, View, ViewStyle, Text, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../theme-context';
 import { defaultsDeep } from 'lodash';
-import { TickIcon } from '@/assets';
+import { TickIcon } from '../assets';
 
 export type CheckBoxStyles = {
   containerStyle?: StyleProp<ViewStyle>;
