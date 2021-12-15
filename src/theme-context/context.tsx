@@ -26,6 +26,8 @@ import { ImagePickerStyles } from '../image-picker';
 import defaultImagePickerTheme from '../image-picker/theme';
 import { DateRangePickerStyles } from '../date-range-picker';
 import defaultDateRangePickerTheme from '../date-range-picker/theme';
+import { CheckBoxStyles } from '../checkbox';
+import defaultCheckBoxTheme from '../checkbox/theme';
 
 export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): ThemeProps => {
   return {
@@ -41,6 +43,7 @@ export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): Th
     datePicker: defaultDatePickerTheme(fonts, colors),
     imagePicker: defaultImagePickerTheme(fonts),
     dateRangePicker: defaultDateRangePickerTheme(fonts, colors),
+    checkBox: defaultCheckBoxTheme(fonts, colors),
   };
 };
 
@@ -57,6 +60,7 @@ export type ThemeProps = {
   datePicker: DatePickerStyles;
   imagePicker: ImagePickerStyles;
   dateRangePicker: DateRangePickerStyles;
+  checkBox: CheckBoxStyles;
 };
 
 export interface ThemeContextData {
@@ -72,6 +76,7 @@ export interface ThemeContextData {
   datePicker: DatePickerStyles;
   imagePicker: ImagePickerStyles;
   dateRangePicker: DateRangePickerStyles;
+  checkBox: CheckBoxStyles;
   i18n?: any;
   countries: CountryInformation[];
   deviceCountryCode: string;
@@ -92,6 +97,7 @@ export const themeDefaultValue: ThemeContextData = {
   datePicker: {},
   imagePicker: {},
   dateRangePicker: {},
+  checkBox: {},
   countries: [],
   deviceCountryCode: '65',
   isLoadingCountry: false,
@@ -118,6 +124,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
   const [imagePicker] = useState<ImagePickerStyles>(initial.imagePicker ?? {});
   const [dateRangePicker] = useState<DateRangePickerStyles>(initial.dateRangePicker ?? {});
   const [currencies, setCurrencies] = useState<any[]>([]);
+  const [checkBox] = useState<CheckBoxStyles>(initial.checkBox ?? {});
 
   useEffect(() => {
     getCurrentCountries();
@@ -214,6 +221,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       imagePicker,
       dateRangePicker,
       currencies,
+      checkBox,
     }),
     [
       colors,
@@ -233,6 +241,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       imagePicker,
       dateRangePicker,
       currencies,
+      checkBox,
     ]
   );
 };

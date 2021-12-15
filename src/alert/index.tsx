@@ -163,7 +163,7 @@ const AlertModal = (props: AlertModalProps) => {
                   },
                 }
               }
-              variant='secondary'
+              variant="secondary"
               label={cancelTitle}
               onPress={onCancel}
             />

@@ -19,9 +19,7 @@ export function isIphoneX() {
   );
 }
 
-export function getBottomSpace() {
-  return isIphoneX() ? 34 : 0;
-}
+export const getBottomSpace = isIphoneX() ? 34 : 0;
 
 export const statusBarHeight = Platform.select({
   ios: isIphoneX() ? 44 : 20,

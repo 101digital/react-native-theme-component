@@ -42,11 +42,12 @@ const Button = (props: ButtonProps) => {
     indicatorColor,
     ...restProps
   } = props;
-  const { button } = useContext(ThemeContext);
+  const { button, colors } = useContext(ThemeContext);
 
   const styles = defaultsDeep(style, button);
 
   const opacity = isLoading || disabled ? disableOpacity : 1.0;
+  const _indicatorColor = indicatorColor ?? colors.loadingIndicatorColor;
 
   return (
     <TouchableOpacity
@@ -62,7 +63,7 @@ const Button = (props: ButtonProps) => {
     >
       {isLoading && (
         <View style={styles.loadingWrapperStyle}>
-          {loadingIndicator ?? <ActivityIndicator color={indicatorColor} />}
+          {loadingIndicator ?? <ActivityIndicator color={_indicatorColor} />}
         </View>
       )}
       <Text style={[variant === 'primary' ? styles.primaryLabelStyle : styles.secondaryLabelStyle]}>

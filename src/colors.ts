@@ -12,6 +12,7 @@ export type ThemeColorProps = {
   dividerColor?: string;
   appBarBackgroundColor?: string;
   appBarTextColor?: string;
+  loadingIndicatorColor?: string;
 };
 
 export const defaultColors: ThemeColorProps = {
@@ -28,4 +29,5 @@ export const defaultColors: ThemeColorProps = {
   dividerColor: '#e2e2e2',
   appBarBackgroundColor: '$ffffff',
   appBarTextColor: '#0C3F79',
+  loadingIndicatorColor: '#0073F0',
 };

@@ -69,3 +69,37 @@ export const getAmountRawValue = (maskedValue: string, options?: any): number =>
   );
   return parseFloat(money);
 };
+
+export const useCurrencyOption = (
+  currencyCode: string,
+  usePrecision: boolean = true,
+  showUnit: boolean = true
+) => {
+  const { currencies } = useContext(ThemeContext);
+  const formatter = find(
+    currencies,
+    (item) => item.code === currencyCode || item.isoCode === currencyCode
+  ) ?? {
+    name: 'United States Dollar-Default',
+    code: 'USD',
+    symbol: '$',
+    decimals: 2,
+    displaySymbol: '$',
+    displayFormat: '#,###.##',
+    displaySymbolFirst: true,
+    isoCode: '840',
+    displaySpace: 0,
+  };
+  const displayFormat = formatter.displayFormat;
+  const separator = displayFormat.charAt(1);
+  const decimal = displayFormat.charAt(displayFormat.length - formatter.decimals - 1);
+  const unit =
+    formatter.displaySpace === 0 ? formatter.displaySymbol : `${formatter.displaySymbol} `;
+  return {
+    precision: usePrecision ? formatter.decimals : 0,
+    separator: decimal,
+    delimiter: separator,
+    mask: '999',
+    unit: showUnit ? unit : '',
+  };
+};

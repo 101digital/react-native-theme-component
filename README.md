@@ -55,11 +55,12 @@ const yourThemeData = createThemeData({
   countryPicker: {},
   datePicker: {},
   imagePicker: {},
+  checkBox: {},
 });
 export default yourThemeData;
 ```
 
-- <b>If you wanna use multiple language</b>, pass your translate function to `i18n` props, then use `i18n` as a context props, like below:
+- <b>Multiple language</b>, If you wanna use multiple language, you must pass your translate function to `i18n` props, then use `i18n` as a context props (see below code) and get all values `texts` in `src/theme-component.json` and put them into your app language data.
 
 ```javascript
 import { ThemeProvider } from 'react-native-theme-component';
@@ -92,6 +93,7 @@ type ThemeProps = {
   countryPicker: CountryPickerStyles,
   datePicker: DatePickerStyles,
   imagePicker: ImagePickerStyles,
+  checkBox: CheckBoxStyles,
 };
 ```
 
@@ -211,7 +213,7 @@ const TestScreen = () => {
         onConfirmed={() => {
           // handle next action
         }}
-        leftIcon={<FailedSvg width={18} height={18} fill="red" />}
+        leftIcon={<FailedSvg width={18} height={18} fill='red' />}
         onClose={() => setShowAlert(false)}
       />
     </View>
@@ -273,7 +275,7 @@ const TestScreen = () => {
   return (
     <View>
       <Image
-        resizeMode="cover"
+        resizeMode='cover'
         source={{
           uri: 'https://image_url',
         }}
@@ -459,10 +461,10 @@ To use `ImagePicker`, make sure you installed [react-native-permissions](https:/
 | Name                 | Type                           | Description                                                                               |
 | :------------------- | :----------------------------- | :---------------------------------------------------------------------------------------- |
 | isVisible            | bool (Optional)                | If `true` image picker will be shown . Default is `false`                                 |
-| maxImageSize         | number (Optional)              | Max image size can be picked. Default is `2MB `                                           |
-| allowTypes           | String[] (Optional)            | List of document's extension can be picked                                                |
-| cropping             | bool (Optional)                | Crop image after picked. Default is `false `                                              |
-| cropping             | bool (Optional)                | Crop image after picked. Default is `false `                                              |
+| maxImageSize         | number (Optional)              | Max image size can be picked. Default is `2MB`                                            |
+| allowTypes           | String[](Optional)             | List of document's extension can be picked                                                |
+| cropping             | bool (Optional)                | Crop image after picked. Default is `false`                                               |
+| cropping             | bool (Optional)                | Crop image after picked. Default is `false`                                               |
 | cropperCircleOverlay | bool (Optional)                | If allow crop image, then can crop into circle image or keep original. Default is `false` |
 | useFrontCamera       | bool (Optional)                | User front camera when taking a photo. Default is `false`                                 |
 | onClose              | Function (Required)            | Callback to handle closing image picker                                                   |
@@ -487,6 +489,39 @@ const TestScreen = () => {
         tapShowModel={tapShowModel}
         onUpload={(image) => {
           // handle your business with image data
+        }}
+      />
+    </View>
+  );
+};
+```
+
+### Check Box
+
+| Name            | Type                      | Description                                  |
+| :-------------- | :------------------------ | :------------------------------------------- |
+| title           | string (Required)         | Title of check box                           |
+| isSelected      | bool (Required)           | If `true` check box will be selected state   |
+| onChanged       | Function (Required)       | Listen when selected state changed           |
+| activeIconColor | string (Optional)         | Color of tick icon when is selected state    |
+| tickIcon        | ReactNode (Optional)      | Custom tick icon                             |
+| style           | CheckBoxStyles (Optional) | Can be found [here](/src/checkbox/index.tsx) |
+
+- Example
+
+```javascript
+import { CheckBox } from 'react-native-theme-component';
+
+const TestScreen = () => {
+  const [isSelected, setSelected] = useState(false);
+
+  return (
+    <View>
+      <CheckBox
+        title='Do you have a book'
+        isSelected={isSelected}
+        onChanged={(value) => {
+          setSelected(value);
         }}
       />
     </View>
