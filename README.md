@@ -2,6 +2,33 @@
 
 <b>react-native-theme-component</b> is a reusable component which provides set of base elements that can be used across all the apps developed by 101 Digital.
 
+## Table of Content
+
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+  - [Configurate ThemeProvider](#configurate-themeprovider)
+  - [Create custom theme data](#create-custom-theme-data)
+  - [Multiple languages](#multiple-languages)
+- [API reference](#api-reference)
+  - [Theme data](#theme-data)
+  - [Access Theme Data](#access-theme-data)
+  - [Colors](#colors)
+  - [Fonts](#fonts)
+    - [Note: If you use default font family (Poppins), you need some steps to link default font to your app.](#note--if-you-use-default-font-family--poppins---you-need-some-steps-to-link-default-font-to-your-app)
+  - [Button](#button)
+  - [Alert](#alert)
+  - [BottomSheet](#bottomsheet)
+  - [Image](#image)
+  - [InputField](#inputfield)
+  - [InputPhoneNumber](#inputphonenumber)
+  - [ErrorModal](#errormodal)
+  - [Date Picker](#date-picker)
+  - [Country Picker](#country-picker)
+  - [Image Picker](#image-picker)
+  - [Check Box](#check-box)
+  - [Add component to the config.json file manually](#add-component-to-the-configjson-file-manually)
+
 ## Features
 
 - Configure theme data (colors, fonts, button styles, alert styles... )
@@ -28,7 +55,9 @@ Make sure you have permission to access this repository
 
 ## Quick Start
 
-- Before using the theme-component, you must wrap your app with `ThemProvider` in your `app.ts`
+### Configurate ThemeProvider
+
+Before using the theme-component, you must wrap your app with `ThemProvider` in your `app.ts`
 
 ```javascript
 import { ThemeProvider } from 'react-native-theme-component';
@@ -38,7 +67,9 @@ const App = () => {
 };
 ```
 
-- You can create your theme data by using `createThemeData` function. Or elese, default theme will be used.
+### Create custom theme data
+
+You can create your theme data by using `createThemeData` function. Or elese, default theme will be used.
 
 ```javascript
 import { createThemeData } from 'react-native-theme-component';
@@ -60,7 +91,9 @@ const yourThemeData = createThemeData({
 export default yourThemeData;
 ```
 
-- <b>Multiple language</b>, If you wanna use multiple language, you must pass your translate function to `i18n` props, then use `i18n` as a context props (see below code) and get all values `texts` in `src/theme-component.json` and put them into your app language data.
+### Multiple languages
+
+If you wanna use multiple language, you must pass your translate function to `i18n` props, then use `i18n` as a context props (see below code) and get all values `texts` in `src/theme-component.json` and put them into your app language data.
 
 ```javascript
 import { ThemeProvider } from 'react-native-theme-component';
