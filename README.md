@@ -36,10 +36,10 @@
 
 ## Installation
 
-To add the theme-component to React Native app, run this command:
+To add the theme-component to React Native app, run this command with tag version
 
 ```
-yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git
+yarn add git+ssh://git@github.com/101digital/react-native-theme-component.git#tag-version
 ```
 
 Make sure you have permission to access this repository
