@@ -44,7 +44,7 @@ export type CountryPickerProps = {
   isVisible?: boolean;
   backdropOpacity?: number;
   onClose: () => void;
-  onSelectedCountry: (code: string) => void;
+  onSelectedCountry: (code: string, name: string) => void;
   style?: CountryPickerStyles;
 };
 
@@ -111,8 +111,8 @@ const CountryPicker = (props: CountryPickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn="slideInUp"
-      animationOut="slideOutDown"
+      animationIn='slideInUp'
+      animationOut='slideOutDown'
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
     >
@@ -151,7 +151,7 @@ const CountryPicker = (props: CountryPickerProps) => {
             keyExtractor={(item, index) => `${item.id}-${index}`}
             data={_currentCountries}
             contentContainerStyle={styles.listContentContainerStyle}
-            keyboardShouldPersistTaps="handled"
+            keyboardShouldPersistTaps='handled'
             renderItem={({ item }) => (
               <ItemCountryCode
                 icon={{
@@ -159,7 +159,7 @@ const CountryPicker = (props: CountryPickerProps) => {
                 }}
                 countryName={item.attributes.name}
                 countryCode={item.attributes.idd}
-                onPress={() => onSelectedCountry(item.attributes.idd)}
+                onPress={() => onSelectedCountry(item.attributes.idd, item.attributes.name)}
                 flagStyle={styles.flagContainerStyle}
                 countryCodeStyle={styles.countryCodeTextStyle}
                 countryNameStyle={styles.countryNameTextStyle}
