@@ -22,6 +22,8 @@ const defaultInputFieldTheme = (fonts: ThemeFontProps, _: ThemeColorProps): Inpu
       fontSize: 16,
       color: 'black',
       fontFamily: fonts.regular,
+      paddingBottom: 0,
+      paddingTop: 0,
     },
     errorTextStyle: {
       fontSize: 12,
