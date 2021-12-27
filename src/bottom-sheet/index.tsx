@@ -24,6 +24,7 @@ export type BottomSheetModalProps = {
   animationOut?: 'fadeOut' | 'slideOutDown' | 'zoomOut';
   animationInTiming?: number;
   animationOutTiming?: number;
+  avoidKeyboard?: boolean;
   onBackButtonPress?: () => void;
   onBackdropPress?: () => void;
   onModalHide?: () => void;
