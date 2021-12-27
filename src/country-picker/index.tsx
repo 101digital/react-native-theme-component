@@ -44,7 +44,7 @@ export type CountryPickerProps = {
   isVisible?: boolean;
   backdropOpacity?: number;
   onClose: () => void;
-  onSelectedCountry: (code: string, name: string) => void;
+  onSelectedCountry: (code: string, name: string, code3: string) => void;
   style?: CountryPickerStyles;
 };
 
@@ -159,7 +159,13 @@ const CountryPicker = (props: CountryPickerProps) => {
                 }}
                 countryName={item.attributes.name}
                 countryCode={item.attributes.idd}
-                onPress={() => onSelectedCountry(item.attributes.idd, item.attributes.name)}
+                onPress={() =>
+                  onSelectedCountry(
+                    item.attributes.idd,
+                    item.attributes.name,
+                    item.attributes.code3
+                  )
+                }
                 flagStyle={styles.flagContainerStyle}
                 countryCodeStyle={styles.countryCodeTextStyle}
                 countryNameStyle={styles.countryNameTextStyle}
