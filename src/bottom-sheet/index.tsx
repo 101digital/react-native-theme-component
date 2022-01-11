@@ -49,9 +49,9 @@ const BottomSheetModal = (props: BottomSheetModalProps) => {
       style={styles.modalStyle}
       {...restProps}
     >
-      <SafeAreaView style={styles.containerStyle}>
-        <View style={styles.contentContainerStyle}>{children}</View>
-      </SafeAreaView>
+      <View style={styles.containerStyle}>
+        <SafeAreaView style={styles.contentContainerStyle}>{children}</SafeAreaView>
+      </View>
     </Modal>
   );
 };
