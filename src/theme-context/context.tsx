@@ -28,6 +28,8 @@ import { DateRangePickerStyles } from '../date-range-picker';
 import defaultDateRangePickerTheme from '../date-range-picker/theme';
 import { CheckBoxStyles } from '../checkbox';
 import defaultCheckBoxTheme from '../checkbox/theme';
+import { LoadingModalStyles } from '../loading-modal';
+import defaultLoadingModalStyles from '../loading-modal/theme';
 
 export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): ThemeProps => {
   return {
@@ -44,6 +46,7 @@ export const defaultTheme = (fonts: ThemeFontProps, colors: ThemeColorProps): Th
     imagePicker: defaultImagePickerTheme(fonts),
     dateRangePicker: defaultDateRangePickerTheme(fonts, colors),
     checkBox: defaultCheckBoxTheme(fonts, colors),
+    loadingModal: defaultLoadingModalStyles(),
   };
 };
 
@@ -61,6 +64,7 @@ export type ThemeProps = {
   imagePicker: ImagePickerStyles;
   dateRangePicker: DateRangePickerStyles;
   checkBox: CheckBoxStyles;
+  loadingModal: LoadingModalStyles;
 };
 
 export interface ThemeContextData {
@@ -77,6 +81,7 @@ export interface ThemeContextData {
   imagePicker: ImagePickerStyles;
   dateRangePicker: DateRangePickerStyles;
   checkBox: CheckBoxStyles;
+  loadingModal: LoadingModalStyles;
   i18n?: any;
   countries: CountryInformation[];
   deviceCountryCode: string;
@@ -102,6 +107,7 @@ export const themeDefaultValue: ThemeContextData = {
   deviceCountryCode: '65',
   isLoadingCountry: false,
   currencies: [],
+  loadingModal: {},
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeDefaultValue);
@@ -125,6 +131,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
   const [dateRangePicker] = useState<DateRangePickerStyles>(initial.dateRangePicker ?? {});
   const [currencies, setCurrencies] = useState<any[]>([]);
   const [checkBox] = useState<CheckBoxStyles>(initial.checkBox ?? {});
+  const [loadingModal] = useState<LoadingModalStyles>(initial.loadingModal ?? {});
 
   useEffect(() => {
     getCurrentCountries();
@@ -222,6 +229,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       dateRangePicker,
       currencies,
       checkBox,
+      loadingModal,
     }),
     [
       colors,
@@ -242,6 +250,7 @@ export const useThemeContextValue = (initial: ThemeProps, initI18n?: any): Theme
       dateRangePicker,
       currencies,
       checkBox,
+      loadingModal,
     ]
   );
 };
