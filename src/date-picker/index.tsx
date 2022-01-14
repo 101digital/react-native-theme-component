@@ -59,7 +59,16 @@ const DatePicker = (props: DatePickerProps) => {
     backdropOpacity,
   } = props;
   const [selectedDate, setDate] = useState(moment(pickedDate).format('YYYY-MM-DD'));
-  const [selectedStartDate] = useState(moment(minDate).format('YYYY-MM-DD'));
+  const [_minDate, setMinDate] = useState(minDate);
+  const [_maxDate, setMaxDate] = useState(maxDate);
+
+  useEffect(() => {
+    setMinDate(minDate);
+  }, [minDate]);
+
+  useEffect(() => {
+    setMaxDate(maxDate);
+  }, [maxDate]);
 
   useEffect(() => {
     setDate(moment(pickedDate).format('YYYY-MM-DD'));
@@ -132,8 +141,8 @@ const DatePicker = (props: DatePickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn="slideInUp"
-      animationOut="slideOutDown"
+      animationIn='slideInUp'
+      animationOut='slideOutDown'
       onBackdropPress={() => onClose(undefined)}
       onBackButtonPress={() => onClose(undefined)}
     >
@@ -173,8 +182,8 @@ const DatePicker = (props: DatePickerProps) => {
                 marked: selectedDate === moment().format('YYYY-MM-DD'),
               },
             }}
-            minDate={minDate ? selectedStartDate : undefined}
-            maxDate={maxDate}
+            minDate={_minDate}
+            maxDate={_maxDate}
             current={new Date(selectedDate)}
             theme={calTheme}
             onDayPress={(day: DateObject) => {
