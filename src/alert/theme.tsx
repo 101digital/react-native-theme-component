@@ -9,6 +9,7 @@ const defaultAlertTheme = (fonts: ThemeFontProps, _: ThemeColorProps): AlertModa
       justifyContent: 'center',
       alignItems: 'center',
       margin: 0,
+      width: '100%',
     },
     containerStyle: {
       width: '85%',
@@ -31,12 +32,11 @@ const defaultAlertTheme = (fonts: ThemeFontProps, _: ThemeColorProps): AlertModa
       flex: 1,
       paddingVertical: 15,
       color: 'black',
-      paddingLeft: 0,
+      paddingLeft: 8,
       fontFamily: fonts.medium,
     },
     leftIconStyle: {
       paddingVertical: 20,
-      paddingRight: 8,
     },
     closeButtonStyle: {
       paddingVertical: 15,
