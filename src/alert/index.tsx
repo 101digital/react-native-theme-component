@@ -63,7 +63,7 @@ export type AlertModalProps = {
   onBackdropPress?: () => void;
   onModalHide?: () => void;
   avoidKeyboard?: boolean;
-  enableLeftIcon?: boolean;
+  isShowLeftIcon?: boolean;
 };
 
 const AlertModal = (props: AlertModalProps) => {
@@ -86,7 +86,7 @@ const AlertModal = (props: AlertModalProps) => {
     timeLimit,
     timeOut,
     closeIcon,
-    enableLeftIcon,
+    isShowLeftIcon,
     ...restProps
   } = props;
   const { alert, colors, i18n } = useContext(ThemeContext);
@@ -136,9 +136,9 @@ const AlertModal = (props: AlertModalProps) => {
     >
       <View style={styles.containerStyle}>
         <View style={styles.headerStyle}>
-          {_leftIcon && enableLeftIcon && (
+          {_leftIcon && (
             <View style={[styles.leftIconStyle, { paddingLeft: horizontalSpace }]}>
-              {_leftIcon}
+              {isShowLeftIcon && _leftIcon}
             </View>
           )}
           <Text style={styles.titleTextStyle}>{title}</Text>
@@ -200,7 +200,7 @@ AlertModal.defaultProps = {
   animationOut: 'fadeOut',
   isShowClose: true,
   isFullWidth: false,
-  enableLeftIcon: true,
+  isShowLeftIcon: true,
 };
 
 export default React.memo(AlertModal);
