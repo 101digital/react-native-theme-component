@@ -52,8 +52,8 @@ export type AlertModalProps = {
   timeOut?: boolean;
   timeLimit?: number;
   style?: AlertModalStyles;
-  animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn';
-  animationOut?: 'fadeOut' | 'slideOutDown' | 'zoomOut';
+  animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn' | 'slideInRight';
+  animationOut?: 'fadeOut' | 'slideOutDown' | 'zoomOut' | 'slideOutRight';
   animationInTiming?: number;
   animationOutTiming?: number;
   onConfirmed?: () => void;

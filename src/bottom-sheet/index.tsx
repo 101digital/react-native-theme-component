@@ -20,8 +20,8 @@ export type BottomSheetModalProps = {
   children: ReactNode;
   backdropOpacity?: number;
   style?: BottomSheetModalStyles;
-  animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn';
-  animationOut?: 'fadeOut' | 'slideOutDown' | 'zoomOut';
+  animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn' | 'slideInRight';
+  animationOut?: 'fadeOut' | 'slideOutDown' | 'zoomOut' | 'slideOutRight';
   animationInTiming?: number;
   animationOutTiming?: number;
   avoidKeyboard?: boolean;
