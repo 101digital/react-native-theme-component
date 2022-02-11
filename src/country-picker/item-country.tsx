@@ -41,12 +41,12 @@ const ItemCountryCode = (props: ItemCountryProps) => {
         <Image
           source={icon}
           style={styles.image}
-          resizeMode="stretch"
+          resizeMode='stretch'
           borderRadius={Platform.OS === 'android' ? undefined : 5}
         />
       </View>
       <Text style={countryNameStyle}>{countryName}</Text>
-      <Text style={countryCodeStyle}>{countryCode}</Text>
+      <Text style={countryCodeStyle}>{`+${countryCode}`}</Text>
     </TouchableOpacity>
   );
 };
