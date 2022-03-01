@@ -11,7 +11,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-// @ts-ignore
 import { Calendar, CalendarTheme, DateObject } from 'react-native-calendars';
 import moment from 'moment';
 import { ThemeContext } from '../theme-context';
