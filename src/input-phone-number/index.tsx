@@ -96,9 +96,11 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
   let separatorColor: string;
 
   if (meta.error && meta.touched) {
-    separatorColor = errorBorderColor!;
+    separatorColor = (errorBorderColor ?? colors.errorInputBorderColor)!;
   } else {
-    separatorColor = active ? (activeBorderColor ?? colors.primaryColor)! : inactiveBorderColor!;
+    separatorColor = active
+      ? (activeBorderColor ?? colors.activeInputBorderColor)!
+      : (inactiveBorderColor ?? colors.inActiveInputBorderColor)!;
   }
 
   const getErrorMessage = (error: string) => {
@@ -127,7 +129,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
               options={options}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               type={type}
               {...restProps}
             />
@@ -139,7 +141,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               onChangeText={handleMobileNumberTextOnChange}
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               {...restProps}
             />
           )}
@@ -154,8 +156,6 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
 };
 
 InputPhoneNumber.defaultProps = {
-  errorBorderColor: '#E63946',
-  inactiveBorderColor: '#E6E6E6',
   type: 'custom',
 };
 

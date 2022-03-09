@@ -13,6 +13,9 @@ export type ThemeColorProps = {
   appBarBackgroundColor?: string;
   appBarTextColor?: string;
   loadingIndicatorColor?: string;
+  inActiveInputBorderColor?: string;
+  activeInputBorderColor?: string;
+  errorInputBorderColor?: string;
 };
 
 export const defaultColors: ThemeColorProps = {
@@ -30,4 +33,7 @@ export const defaultColors: ThemeColorProps = {
   appBarBackgroundColor: '$ffffff',
   appBarTextColor: '#0C3F79',
   loadingIndicatorColor: '#0073F0',
+  activeInputBorderColor: '#0073F0',
+  errorInputBorderColor: '#D32F2F',
+  inActiveInputBorderColor: '#E6E6E6',
 };

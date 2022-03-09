@@ -77,9 +77,11 @@ const InputField = (props: InputFieldProps) => {
   let separatorColor: string;
 
   if (meta.error && meta.touched) {
-    separatorColor = errorBorderColor!;
+    separatorColor = (errorBorderColor ?? colors.errorInputBorderColor)!;
   } else {
-    separatorColor = active ? (activeBorderColor ?? colors.primaryColor)! : inactiveBorderColor!;
+    separatorColor = active
+      ? (activeBorderColor ?? colors.activeInputBorderColor)!
+      : (inactiveBorderColor ?? colors.inActiveInputBorderColor)!;
   }
 
   const getErrorMessage = (error: string) => {
@@ -124,8 +126,6 @@ const InputField = (props: InputFieldProps) => {
 };
 
 InputField.defaultProps = {
-  errorBorderColor: '#E63946',
-  inactiveBorderColor: '#E6E6E6',
   type: 'custom',
 };
 
