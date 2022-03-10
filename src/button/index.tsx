@@ -18,6 +18,7 @@ export type ButtonProps = {
   variant: 'primary' | 'secondary';
   style?: ButtonStyles;
   disableOpacity?: number;
+  disableColor?: string;
   loadingIndicator?: ReactNode;
   indicatorColor?: string;
 } & TouchableOpacityProps;
@@ -40,14 +41,26 @@ const Button = (props: ButtonProps) => {
     disableOpacity,
     loadingIndicator,
     indicatorColor,
+    disableColor,
     ...restProps
   } = props;
   const { button, colors } = useContext(ThemeContext);
 
   const styles = defaultsDeep(style, button);
 
-  const opacity = isLoading || disabled ? disableOpacity : 1.0;
+  const opacity =
+    (disableColor !== undefined && isLoading) ||
+    (disableColor === undefined && (isLoading || disabled))
+      ? disableOpacity
+      : 1.0;
+
   const _indicatorColor = indicatorColor ?? colors.loadingIndicatorColor;
+  const _backgroundColor = disabled
+    ? disableColor ??
+      (variant === 'primary' ? colors.primaryButtonColor : colors.secondaryButtonColor)
+    : variant === 'primary'
+    ? colors.primaryButtonColor
+    : colors.secondaryButtonColor;
 
   return (
     <TouchableOpacity
@@ -55,6 +68,7 @@ const Button = (props: ButtonProps) => {
         variant === 'primary' ? styles.primaryContainerStyle : styles.secondaryContainerStyle,
         {
           opacity,
+          backgroundColor: _backgroundColor,
         },
       ]}
       activeOpacity={0.8}
