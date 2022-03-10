@@ -18,6 +18,7 @@ export type BottomSheetModalStyles = {
 export type BottomSheetModalProps = {
   isVisible?: boolean;
   children: ReactNode;
+  useSafeArea?: boolean;
   backdropOpacity?: number;
   style?: BottomSheetModalStyles;
   animationIn?: 'fadeIn' | 'slideInUp' | 'zoomIn' | 'slideInRight';
@@ -31,7 +32,7 @@ export type BottomSheetModalProps = {
 };
 
 const BottomSheetModal = (props: BottomSheetModalProps) => {
-  const { children, backdropOpacity, style, ...restProps } = props;
+  const { children, backdropOpacity, style, useSafeArea, ...restProps } = props;
   const { bottomSheet } = useContext(ThemeContext);
 
   const styles = defaultsDeep(style, bottomSheet);
@@ -50,7 +51,11 @@ const BottomSheetModal = (props: BottomSheetModalProps) => {
       {...restProps}
     >
       <View style={styles.containerStyle}>
-        <SafeAreaView style={styles.contentContainerStyle}>{children}</SafeAreaView>
+        {useSafeArea ? (
+          <SafeAreaView style={styles.contentContainerStyle}>{children}</SafeAreaView>
+        ) : (
+          <View style={styles.contentContainerStyle}>{children}</View>
+        )}
       </View>
     </Modal>
   );
@@ -61,6 +66,7 @@ BottomSheetModal.defaultProps = {
   backdropOpacity: 0.5,
   animationIn: 'slideInUp',
   animationOut: 'slideOutDown',
+  useSafeArea: true,
 };
 
 export default BottomSheetModal;
