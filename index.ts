@@ -20,5 +20,7 @@ export { default as DateRangePicker } from './src/date-range-picker';
 export { default as CheckBox } from './src/checkbox';
 export { default as LoadingModal } from './src/loading-modal';
 export { default as KeyboardSpace } from './src/keyboard-space';
+export { default as OTPField } from './src/otp-field';
+export { default as CountdownTimer } from './src/countdown-timer';
 export { showMessage } from 'react-native-flash-message';
 export * from './src/utils/currency-format';

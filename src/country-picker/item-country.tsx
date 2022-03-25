@@ -41,7 +41,7 @@ const ItemCountryCode = (props: ItemCountryProps) => {
         <Image
           source={icon}
           style={styles.image}
-          resizeMode='stretch'
+          resizeMode="stretch"
           borderRadius={Platform.OS === 'android' ? undefined : 5}
         />
       </View>

@@ -129,7 +129,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
               options={options}
-              keyboardType='number-pad'
+              keyboardType="number-pad"
               type={type}
               {...restProps}
             />
@@ -141,7 +141,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
               onChangeText={handleMobileNumberTextOnChange}
               style={styles.textInputStyle}
               placeholderTextColor={placeholderTextColor}
-              keyboardType='number-pad'
+              keyboardType="number-pad"
               {...restProps}
             />
           )}

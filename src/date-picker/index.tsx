@@ -140,8 +140,8 @@ const DatePicker = (props: DatePickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn='slideInUp'
-      animationOut='slideOutDown'
+      animationIn="slideInUp"
+      animationOut="slideOutDown"
       onBackdropPress={() => onClose(undefined)}
       onBackButtonPress={() => onClose(undefined)}
     >

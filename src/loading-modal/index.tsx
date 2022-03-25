@@ -39,12 +39,12 @@ const LoadingModal = (props: LoadingModalProps) => {
       useNativeDriver
       backdropOpacity={backgropOpacity}
       statusBarTranslucent
-      animationIn='fadeIn'
-      animationOut='fadeOut'
+      animationIn="fadeIn"
+      animationOut="fadeOut"
     >
       <View style={styles.containerStyle}>
         <View style={styles.contentContainerStyle}>
-          <ActivityIndicator color={indicatorColor} size='large' />
+          <ActivityIndicator color={indicatorColor} size="large" />
         </View>
       </View>
     </Modal>

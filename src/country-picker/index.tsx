@@ -111,8 +111,8 @@ const CountryPicker = (props: CountryPickerProps) => {
       backdropOpacity={backdropOpacity}
       statusBarTranslucent
       style={innerStyles.modalStyle}
-      animationIn='slideInUp'
-      animationOut='slideOutDown'
+      animationIn="slideInUp"
+      animationOut="slideOutDown"
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
     >
@@ -151,7 +151,7 @@ const CountryPicker = (props: CountryPickerProps) => {
             keyExtractor={(item, index) => `${item.id}-${index}`}
             data={_currentCountries}
             contentContainerStyle={styles.listContentContainerStyle}
-            keyboardShouldPersistTaps='handled'
+            keyboardShouldPersistTaps="handled"
             renderItem={({ item }) => (
               <ItemCountryCode
                 icon={{
