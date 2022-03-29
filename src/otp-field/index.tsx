@@ -8,22 +8,22 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 
-export type OTPFieldTimerProps = {
-  style?: OTPFieldTimerStyles;
+export type OTPFieldProps = {
+  style?: OTPFieldStyles;
   cellCount: number;
   maskSymbol?: string;
   onChanged: (value: string) => void;
 };
 
-export type OTPFieldTimerStyles = {
+export type OTPFieldStyles = {
   containerStyle?: StyleProp<ViewStyle>;
   focusCellContainerStyle?: StyleProp<ViewStyle>;
   cellContainerStyle?: StyleProp<ViewStyle>;
   cellTextStyle?: StyleProp<TextStyle>;
 };
 
-const OTPFieldTimer = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldTimerProps) => {
-  const styles: OTPFieldTimerStyles = useMergeStyles(style);
+const OTPField = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldProps) => {
+  const styles: OTPFieldStyles = useMergeStyles(style);
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({ value, cellCount: cellCount });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -42,8 +42,8 @@ const OTPFieldTimer = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldTime
       value={value}
       onChangeText={setValue}
       cellCount={cellCount}
-      keyboardType="number-pad"
-      textContentType="oneTimeCode"
+      keyboardType='number-pad'
+      textContentType='oneTimeCode'
       rootStyle={styles.containerStyle}
       renderCell={({ index, symbol, isFocused }) => {
         let textChild = null;
@@ -75,4 +75,4 @@ const OTPFieldTimer = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldTime
   );
 };
 
-export default OTPFieldTimer;
+export default OTPField;
