@@ -40,6 +40,9 @@ const CountdownTimer = forwardRef(
 
     useEffect(() => {
       start();
+      return () => {
+        BackgroundTimer.clearInterval(backgroundRef.current);
+      };
     }, []);
 
     const start = () => {
