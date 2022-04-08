@@ -37,3 +37,16 @@ export const defaultColors: ThemeColorProps = {
   errorInputBorderColor: '#D32F2F',
   inActiveInputBorderColor: '#E6E6E6',
 };
+
+export const rgbToHex = (color: string) => {
+  const a = color.replace(/[^\d,]/g, '').split(',');
+  return '#' + ((1 << 24) + (+a[0] << 16) + (+a[1] << 8) + +a[2]).toString(16).slice(1);
+};
+
+export const addAlpha = (color: string, opacity: number) => {
+  if (!color.startsWith('#')) {
+    color = rgbToHex(color);
+  }
+  const _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
+  return color + _opacity.toString(16)?.toUpperCase();
+};
