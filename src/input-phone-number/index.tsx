@@ -30,6 +30,7 @@ export type InputPhoneNumberProps = TextInputProps &
     placeholderTextColor?: string;
     style?: InputPhoneNumberStyles;
     formatError?: (error: string) => string;
+    withDialCode?: boolean;
   };
 
 export type InputPhoneNumberStyles = {
@@ -59,6 +60,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
     formatError,
     options,
     type,
+    withDialCode,
     ...restProps
   } = props;
   const { inputPhoneNumber, colors } = useContext(ThemeContext);
@@ -69,7 +71,11 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
   const [mobileNumber, setMobileNumber] = useState('');
 
   useEffect(() => {
-    field.onChange(name)(`${dialCode}${mobileNumber}`);
+    if (withDialCode) {
+      field.onChange(name)(`${dialCode}${mobileNumber}`);
+    } else {
+      field.onChange(name)(`${mobileNumber}`);
+    }
   }, [dialCode, mobileNumber]);
 
   const handleMobileNumberTextOnChange = (text: string) => {
@@ -111,14 +117,16 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
     <View style={styles.containerStyle}>
       <View style={[styles.contentContainerStyle, { borderColor: separatorColor }]}>
         {prefixIcon}
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={styles.dialContainerStyle}
-          onPress={onPressDialCode}
-        >
-          <Text style={styles.dialTextStyle}>{`+${dialCode}`}</Text>
-          <ArrowDownIcon width={10} height={10} color={'black'} />
-        </TouchableOpacity>
+        {withDialCode && (
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.dialContainerStyle}
+            onPress={onPressDialCode}
+          >
+            <Text style={styles.dialTextStyle}>{`+${dialCode}`}</Text>
+            <ArrowDownIcon width={10} height={10} color={'black'} />
+          </TouchableOpacity>
+        )}
         <View style={styles.inputContainerStyle}>
           {showMask ? (
             <TextInputMask
@@ -157,6 +165,7 @@ const InputPhoneNumber = (props: InputPhoneNumberProps) => {
 
 InputPhoneNumber.defaultProps = {
   type: 'custom',
+  withDialCode: true,
 };
 
 export default InputPhoneNumber;
