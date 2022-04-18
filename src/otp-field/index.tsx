@@ -42,8 +42,8 @@ const OTPField = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldProps) =>
       value={value}
       onChangeText={setValue}
       cellCount={cellCount}
-      keyboardType='number-pad'
-      textContentType='oneTimeCode'
+      // keyboardType='number-pad'
+      textContentType="oneTimeCode"
       rootStyle={styles.containerStyle}
       renderCell={({ index, symbol, isFocused }) => {
         let textChild = null;
