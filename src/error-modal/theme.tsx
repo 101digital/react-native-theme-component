@@ -10,6 +10,7 @@ const defaultErrorModalTheme = (fonts: ThemeFontProps): ErrorModalStyles => {
       color: 'grey',
       marginTop: 10,
     },
+    alertStyle: {},
   });
 };
 

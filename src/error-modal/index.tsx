@@ -14,6 +14,7 @@ export interface ErrorData {
 
 export type ErrorModalStyles = {
   errorIdTextStyle?: StyleProp<TextStyle>;
+  alertStyle?: StyleProp<TextStyle>;
 };
 
 export type ErrorModalProps = {
@@ -25,26 +26,43 @@ export type ErrorModalProps = {
   isShowClose?: boolean;
   onClose: () => void;
   style?: ErrorModalStyles;
+  isShowModel?: boolean;
 };
 
 const ErrorModal = (props: ErrorModalProps) => {
   const { errorModal, i18n } = useContext(ThemeContext);
-  const { error, timeLimit, timeOut, onClose, leftIcon, style, isFullWidth, isShowClose } = props;
+  const {
+    error,
+    timeLimit,
+    timeOut,
+    onClose,
+    leftIcon,
+    style,
+    isFullWidth,
+    isShowClose,
+    isShowModel,
+  } = props;
   const [isShowError, setShowError] = useState<boolean>(false);
 
   const styles = defaultsDeep(style, errorModal);
 
   useEffect(() => {
-    if (error) {
-      if (error.errorCode === 401) {
-        onClose();
-      } else {
-        setShowError(true);
-      }
-    } else {
+    if (isShowModel) {
+      setShowError(true);
+    } else if (isShowModel === false) {
       setShowError(false);
+    } else {
+      if (error) {
+        if (error.errorCode === 401) {
+          onClose();
+        } else {
+          setShowError(true);
+        }
+      } else {
+        setShowError(false);
+      }
     }
-  }, [error]);
+  }, [error, isShowModel]);
 
   return (
     <AlertModal
@@ -60,6 +78,7 @@ const ErrorModal = (props: ErrorModalProps) => {
       isShowClose={isShowClose}
       leftIcon={leftIcon ?? <RiskIcon size={20} />}
       onConfirmed={onClose}
+      style={styles.alertStyle}
     >
       {error?.errorId && (
         <Text style={styles.errorIdTextStyle}>
