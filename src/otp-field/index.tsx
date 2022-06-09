@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState, useImperativeHandle } from 'react';
 import { StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
 import useMergeStyles from './theme';
 import {
@@ -15,6 +15,11 @@ export type OTPFieldProps = {
   onChanged: (value: string) => void;
 };
 
+export type OTPFieldRef = {
+  clearInput: () => void;
+  focus: () => void;
+};
+
 export type OTPFieldStyles = {
   containerStyle?: StyleProp<ViewStyle>;
   focusCellContainerStyle?: StyleProp<ViewStyle>;
@@ -22,14 +27,26 @@ export type OTPFieldStyles = {
   cellTextStyle?: StyleProp<TextStyle>;
 };
 
-const OTPField = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldProps) => {
+const OTPField = forwardRef(({ style, onChanged, maskSymbol, cellCount }: OTPFieldProps, ref) => {
   const styles: OTPFieldStyles = useMergeStyles(style);
   const [value, setValue] = useState('');
-  const ref = useBlurOnFulfill({ value, cellCount: cellCount });
+  const blurOnFullFillRef = useBlurOnFulfill({ value, cellCount: cellCount });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
+
+  useImperativeHandle(
+    ref,
+    (): OTPFieldRef => ({
+      clearInput: () => {
+        setValue('');
+      },
+      focus: () => {
+        blurOnFullFillRef.current?.focus();
+      },
+    })
+  );
 
   useEffect(() => {
     onChanged(value);
@@ -37,7 +54,7 @@ const OTPField = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldProps) =>
 
   return (
     <CodeField
-      ref={ref}
+      ref={blurOnFullFillRef}
       {...props}
       value={value}
       onChangeText={setValue}
@@ -73,6 +90,6 @@ const OTPField = ({ style, onChanged, maskSymbol, cellCount }: OTPFieldProps) =>
       }}
     />
   );
-};
+});
 
 export default OTPField;
