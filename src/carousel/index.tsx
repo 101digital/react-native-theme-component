@@ -75,7 +75,10 @@ const Carousel = forwardRef((props: CarouselProps, ref) => {
       {isShowPagingCircle && (
         <View style={styles.pagingCircleContainer}>
           {data.map((_, index) => (
-            <View style={[styles.circle, index === currentIndex && styles.selectedCircle]} />
+            <View
+              key={`circle-${index}`}
+              style={[styles.circle, index === currentIndex && styles.selectedCircle]}
+            />
           ))}
         </View>
       )}
