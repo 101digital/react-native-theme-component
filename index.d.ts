@@ -22,6 +22,7 @@ export { default as LoadingModal } from './src/loading-modal';
 export { default as KeyboardSpace } from './src/keyboard-space';
 export { default as OTPField } from './src/otp-field';
 export { default as CountdownTimer } from './src/countdown-timer';
+export { default as Carousel } from './src/carousel';
 export { showMessage } from 'react-native-flash-message';
 export * from './src/utils/currency-format';
 export * from './src/colors';
