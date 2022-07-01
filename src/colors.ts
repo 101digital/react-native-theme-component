@@ -17,6 +17,8 @@ export type ThemeColorProps = {
   inActiveInputBorderColor?: string;
   activeInputBorderColor?: string;
   errorInputBorderColor?: string;
+  backgroundSearchInput?: string;
+  placeholderColor?: string;
 };
 
 export const defaultColors: ThemeColorProps = {
@@ -38,6 +40,8 @@ export const defaultColors: ThemeColorProps = {
   activeInputBorderColor: '#0073F0',
   errorInputBorderColor: '#D32F2F',
   inActiveInputBorderColor: '#E6E6E6',
+  backgroundSearchInput: '#F1F6FC',
+  placeholderColor: '#BAB7BB',
 };
 
 export const rgbToHex = (color: string) => {
