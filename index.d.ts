@@ -24,6 +24,7 @@ export { default as OTPField } from './src/otp-field';
 export { default as CountdownTimer } from './src/countdown-timer';
 export { default as Carousel } from './src/carousel';
 export { CarouselRef } from './src/carousel';
+export { default as SearchInput } from './src/search-input';
 export { showMessage } from 'react-native-flash-message';
 export * from './src/utils/currency-format';
 export * from './src/colors';
