@@ -1,4 +1,4 @@
-import { SearchInputStyles } from './index';
+import { SearchInputStyles } from './types';
 import { ThemeContext } from '../theme-context/context';
 import { defaultsDeep } from 'lodash';
 import { useContext } from 'react';

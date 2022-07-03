@@ -4,6 +4,7 @@ export type ThemeColorProps = {
   primaryTextColor?: string;
   secondaryTextColor?: string;
   backgroundTextColor?: string;
+  errorTextColor?: string;
   primaryButtonColor?: string;
   secondaryButtonColor?: string;
   primaryButtonLabelColor?: string;
@@ -27,6 +28,7 @@ export const defaultColors: ThemeColorProps = {
   primaryTextColor: '#0C3F79',
   secondaryTextColor: '#0C3F79',
   backgroundTextColor: '#FFFFFF',
+  errorTextColor: '#D32F2F',
   primaryButtonColor: '#0073F0',
   secondaryButtonColor: '#ffffff',
   primaryButtonLabelColor: '#ffffff',

@@ -1,36 +1,14 @@
-import React, { ReactNode, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
-  NativeSyntheticEvent,
-  StyleProp,
-  TextInput,
-  TextInputFocusEventData,
-  TextInputProps,
-  TextStyle,
   View,
-  ViewStyle,
+  TextInput,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
 } from 'react-native';
 import { SearchIcon } from '../assets/search.icon';
 import useMergeStyles from './theme';
 import { ThemeContext } from '../theme-context/context';
-
-export type SearchInputProps = TextInputProps & {
-  errorBorderColor?: string;
-  activeBorderColor?: string;
-  inactiveBorderColor?: string;
-  placeholderTextColor?: string;
-
-  searchIcon?: ReactNode;
-  style?: SearchInputStyles;
-};
-
-export type SearchInputStyles = {
-  containerStyle?: StyleProp<ViewStyle>;
-  inputContainerStyle?: StyleProp<ViewStyle>;
-  textInputStyle?: StyleProp<TextStyle>;
-  errorTextStyle?: StyleProp<TextStyle>;
-  searchIconWrapper?: StyleProp<ViewStyle>;
-  activeInputBorderColor?: StyleProp<ViewStyle>;
-};
+import { SearchInputProps, SearchInputStyles } from './types';
 
 const SearchInput = (props: SearchInputProps) => {
   const {
@@ -40,12 +18,13 @@ const SearchInput = (props: SearchInputProps) => {
     searchIcon,
     placeholder,
     placeholderTextColor,
-    style,
+    inputStyles,
+    blurOnSubmit,
     ...restProps
   } = props;
   const [active, setActive] = useState(false);
   const [value, setValue] = useState<string>();
-  const styles: SearchInputStyles = useMergeStyles(style);
+  const styles: SearchInputStyles = useMergeStyles(inputStyles);
   const { colors } = useContext(ThemeContext);
 
   const handleOnFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
@@ -64,7 +43,7 @@ const SearchInput = (props: SearchInputProps) => {
 
   const onValueChange = (s: string) => {
     setValue(s);
-    if (onChangeText) {
+    if(onChangeText) {
       onChangeText(s);
     }
   };
@@ -77,7 +56,7 @@ const SearchInput = (props: SearchInputProps) => {
           onBlur={handleOnBlur}
           onChangeText={onValueChange}
           value={value}
-          placeholder={placeholder ? placeholder : 'Search'}
+          placeholder={placeholder}
           style={[styles.textInputStyle, active && styles.activeInputBorderColor]}
           placeholderTextColor={
             placeholderTextColor ? placeholderTextColor : colors.placeholderColor
