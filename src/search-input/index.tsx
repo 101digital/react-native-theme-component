@@ -9,23 +9,19 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { TextInputMaskProps } from 'react-native-masked-text';
 import { SearchIcon } from '../assets/search.icon';
 import useMergeStyles from './theme';
 import { ThemeContext } from '../theme-context/context';
 
-export type SearchInputProps = TextInputMaskProps &
-  TextInputProps & {
-    searchIcon?: ReactNode;
-    errorBorderColor?: string;
-    activeBorderColor?: string;
-    inactiveBorderColor?: string;
-    placeholderTextColor?: string;
-    placeholder?: string;
-    style?: SearchInputStyles;
-    formatError?: (error: string) => string;
-    onChangeText?: (text: string) => void;
-  };
+export type SearchInputProps = TextInputProps & {
+  errorBorderColor?: string;
+  activeBorderColor?: string;
+  inactiveBorderColor?: string;
+  placeholderTextColor?: string;
+
+  searchIcon?: ReactNode;
+  style?: SearchInputStyles;
+};
 
 export type SearchInputStyles = {
   containerStyle?: StyleProp<ViewStyle>;
@@ -68,7 +64,9 @@ const SearchInput = (props: SearchInputProps) => {
 
   const onValueChange = (s: string) => {
     setValue(s);
-    onChangeText && onChangeText(s);
+    if (onChangeText) {
+      onChangeText(s);
+    }
   };
 
   return (
@@ -77,9 +75,9 @@ const SearchInput = (props: SearchInputProps) => {
         <TextInput
           onFocus={handleOnFocus}
           onBlur={handleOnBlur}
+          onChangeText={onValueChange}
           value={value}
           placeholder={placeholder ? placeholder : 'Search'}
-          onChangeText={onValueChange}
           style={[styles.textInputStyle, active && styles.activeInputBorderColor]}
           placeholderTextColor={
             placeholderTextColor ? placeholderTextColor : colors.placeholderColor
@@ -96,10 +94,6 @@ const SearchInput = (props: SearchInputProps) => {
       </>
     </View>
   );
-};
-
-SearchInput.defaultProps = {
-  type: 'custom',
 };
 
 export default SearchInput;

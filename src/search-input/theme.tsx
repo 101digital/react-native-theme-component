@@ -2,7 +2,7 @@ import { SearchInputStyles } from './index';
 import { ThemeContext } from '../theme-context/context';
 import { defaultsDeep } from 'lodash';
 import { useContext } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const useMergeStyles = (style?: SearchInputStyles): SearchInputStyles => {
   const { fonts, colors } = useContext(ThemeContext);
@@ -12,8 +12,9 @@ const useMergeStyles = (style?: SearchInputStyles): SearchInputStyles => {
       marginVertical: 10,
     },
     textInputStyle: {
+      paddingVertical: 11,
       fontSize: 16,
-      color: 'black',
+      color: colors.primaryTextColor,
       fontFamily: fonts.regular,
       borderRadius: 5,
       paddingRight: 15,
@@ -21,12 +22,6 @@ const useMergeStyles = (style?: SearchInputStyles): SearchInputStyles => {
       backgroundColor: colors.backgroundSearchInput,
       borderWidth: 1,
       borderColor: 'transparent',
-    },
-    errorTextStyle: {
-      fontSize: 12,
-      color: 'red',
-      marginTop: Platform.OS === 'ios' ? 5 : 10,
-      fontFamily: fonts.regular,
     },
     searchIconWrapper: {
       position: 'absolute',
