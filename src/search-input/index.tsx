@@ -1,14 +1,10 @@
 import React, { useContext, useState } from 'react';
-import {
-  View,
-  TextInput,
-  NativeSyntheticEvent,
-  TextInputFocusEventData,
-} from 'react-native';
+import { View, TextInput, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 import { SearchIcon } from '../assets/search.icon';
 import useMergeStyles from './theme';
 import { ThemeContext } from '../theme-context/context';
 import { SearchInputProps, SearchInputStyles } from './types';
+import { useDebounce } from '../hooks/useDebounce';
 
 const SearchInput = (props: SearchInputProps) => {
   const {
@@ -19,13 +15,22 @@ const SearchInput = (props: SearchInputProps) => {
     placeholder,
     placeholderTextColor,
     inputStyles,
-    blurOnSubmit,
+    debounceTimeout,
+    onChangeTextDebounce,
     ...restProps
   } = props;
   const [active, setActive] = useState(false);
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
+
+  const debounceValue = useDebounce<string>(value, debounceTimeout ?? 500);
   const styles: SearchInputStyles = useMergeStyles(inputStyles);
   const { colors } = useContext(ThemeContext);
+
+  React.useEffect(() => {
+    if (debounceValue.length > 0 && onChangeTextDebounce) {
+      onChangeTextDebounce(value);
+    }
+  }, [debounceValue]);
 
   const handleOnFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setActive(true);
@@ -43,7 +48,7 @@ const SearchInput = (props: SearchInputProps) => {
 
   const onValueChange = (s: string) => {
     setValue(s);
-    if(onChangeText) {
+    if (onChangeText) {
       onChangeText(s);
     }
   };
