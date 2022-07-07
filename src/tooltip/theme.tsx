@@ -14,9 +14,10 @@ const useMergeStyles = (style?: TooltipStyles): TooltipStyles => {
     },
     popupContainer: {
       backgroundColor: '#FFF0D9',
-      paddingVertical: 5,
-      paddingHorizontal: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 12,
       position: 'absolute',
+      borderRadius: 2,
     },
     triangleArrowView: {
       width: 0,

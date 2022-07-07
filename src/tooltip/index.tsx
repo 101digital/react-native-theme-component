@@ -17,7 +17,7 @@ const TooltipComponent = (props: TooltipProps) => {
     isShowTooltip,
     popupAlignment,
     arrowSize = 10,
-    popUpWidth = 190,
+    popUpWidth = 210,
   } = props;
   const { size, color, bgColor } = iconStyles || {};
   const styles: TooltipStyles = useMergeStyles(style);
