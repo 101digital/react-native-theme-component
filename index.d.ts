@@ -29,3 +29,4 @@ export * from './src/search-input/types';
 export { showMessage } from 'react-native-flash-message';
 export * from './src/utils/currency-format';
 export * from './src/colors';
+export { default as Tooltip } from './src/tooltip';
