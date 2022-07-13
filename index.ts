@@ -30,3 +30,4 @@ export { showMessage } from 'react-native-flash-message';
 export * from './src/utils/currency-format';
 export * from './src/colors';
 export { default as Tooltip } from './src/tooltip';
+export { default as ProcessBar } from './src/process-bar';
