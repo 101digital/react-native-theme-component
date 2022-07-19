@@ -31,3 +31,5 @@ export * from './src/utils/currency-format';
 export * from './src/colors';
 export { default as Tooltip } from './src/tooltip';
 export { default as ProcessBar } from './src/process-bar';
+export { default as RadioButtonGroup } from './src/radio-button-group';
+export * from './src/radio-button-group';
