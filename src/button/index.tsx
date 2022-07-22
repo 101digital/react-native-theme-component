@@ -19,6 +19,7 @@ export type ButtonProps = {
   style?: ButtonStyles;
   disableOpacity?: number;
   disableColor?: string;
+  bgColor?: string;
   loadingIndicator?: ReactNode;
   indicatorColor?: string;
 } & TouchableOpacityProps;
@@ -42,6 +43,7 @@ const Button = (props: ButtonProps) => {
     loadingIndicator,
     indicatorColor,
     disableColor,
+    bgColor,
     ...restProps
   } = props;
   const { button, colors } = useContext(ThemeContext);
@@ -56,12 +58,9 @@ const Button = (props: ButtonProps) => {
 
   const _indicatorColor = indicatorColor ?? colors.loadingIndicatorColor;
   const _backgroundColor = disabled
-    ? disableColor ??
-      (variant === 'primary' ? colors.primaryButtonColor : colors.secondaryButtonColor)
-    : variant === 'primary'
-    ? colors.primaryButtonColor
-    : colors.secondaryButtonColor;
-
+    ? disableColor : (bgColor 
+      ? bgColor : (variant === 'primary' ? colors.primaryButtonColor : colors.secondaryButtonColor))
+  
   return (
     <TouchableOpacity
       style={[

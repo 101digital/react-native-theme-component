@@ -23,7 +23,7 @@ export type RadioButtonItem = {
 export type RadioButtonGroupProps = {
   data: RadioButtonItem[];
   onSelect: (value: string) => void;
-  selectedValue: string;
+  selectedValue?: string;
   style?: RadioButtonGroupStyles;
 };
 
