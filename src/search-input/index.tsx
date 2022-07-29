@@ -10,6 +10,7 @@ const SearchInput = (props: SearchInputProps) => {
   const {
     onFocus,
     onBlur,
+    onClearText,
     onChangeText,
     searchIcon,
     placeholder,
@@ -22,35 +23,31 @@ const SearchInput = (props: SearchInputProps) => {
   const [active, setActive] = useState(false);
   const [value, setValue] = useState<string>('');
 
-  const debounceValue = useDebounce<string>(value, debounceTimeout ?? 500);
+  const debounceValue = useDebounce<string>(value, debounceTimeout ?? 300);
   const styles: SearchInputStyles = useMergeStyles(inputStyles);
   const { colors } = useContext(ThemeContext);
 
   React.useEffect(() => {
-    if (debounceValue.length > 0 && onChangeTextDebounce) {
-      onChangeTextDebounce(value);
+    if (debounceValue.length > 0) {
+      onChangeTextDebounce && onChangeTextDebounce(value);
+    } else {
+      onClearText && onClearText();
     }
   }, [debounceValue]);
 
   const handleOnFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setActive(true);
-    if (onFocus) {
-      onFocus(event);
-    }
+    onFocus && onFocus(event);
   };
 
   const handleOnBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setActive(false);
-    if (onBlur) {
-      onBlur(event);
-    }
+    onBlur && onBlur(event);
   };
 
   const onValueChange = (s: string) => {
     setValue(s);
-    if (onChangeText) {
-      onChangeText(s);
-    }
+    onChangeText && onChangeText(s);
   };
 
   return (

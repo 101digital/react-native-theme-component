@@ -8,6 +8,7 @@ export type SearchInputProps = TextInputProps & {
   placeholderTextColor?: string;
 
   onChangeTextDebounce?: (text: string) => void;
+  onClearText?: () => void;
   debounceTimeout?: number;
 
   searchIcon?: ReactNode;
